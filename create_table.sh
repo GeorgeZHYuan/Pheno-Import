@@ -13,6 +13,4 @@ function addPatient {
 	echo "Oooooohohohoho"
 }
 
-function asd {
-	echo "change"
-}
+
