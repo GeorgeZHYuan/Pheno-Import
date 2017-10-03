@@ -1,7 +1,7 @@
-PH_IMPORT_HOME=/home/transmart/import-script
+PH_IMPORT_HOME=/home/transmart/Pheno-Import
 
-USER="Admin"
-PSWD="admin"
+USER=Admin
+PSWD=admin
 HOST=localhost
 PORT=10000
 
