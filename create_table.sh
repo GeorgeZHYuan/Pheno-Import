@@ -1,11 +1,11 @@
 #!/bin/bash
 
-. ./get-data.sh
+. ./get_data.sh 
 
-arr = $1
-for i in "${arr[@]}"
+patient_ids=("$@")
+for patient_id in "${patient_ids[@]}"
 do
-	local patient = $(getPatient ${arr[$i]})
+	local patient=$(getPatient $patient_id)
 	addPatient $patient
 done
 
