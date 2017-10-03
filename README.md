@@ -1,2 +1,2 @@
 # Pheno-Import
-Script to add phenotips data to transmart
+Load phenotips data to transmart
