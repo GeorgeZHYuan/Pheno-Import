@@ -8,7 +8,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 	i+=1
 done < "$1"
 
-./create_table.sh $patients
+./create_table.sh "${patients[@]}"
 
 #$PH_IMPORT_HOME/import-data/Clinical-data/load_clincial.sh
 
