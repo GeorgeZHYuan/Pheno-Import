@@ -1,6 +1,0 @@
-source vars
-
-function getPatient {
-	url="$HOST:$PORT/rest/patients/$1"
-	request=$(curl -u USER:PSWD -X GET $url -o $LOGFILE)
-}
