@@ -6,8 +6,11 @@ patient_ids=("$@")
 i=0
 for patient_id in "${patient_ids[@]}"
 do
-	patient_dataset[$i]=$(curlToPheno "patients" $patient_id $'\r') >> testfile.txt
-	i+=1
+	temp=$(curlToPheno "patients" $patient_id $'\r')
+	if ! [[ "$temp" =~ ^-?[0-9]+$ ]] ; then
+   		patient_dataset[$i]=$temp
+		i+=1
+	fi	
 done
 
 for data in "${patient_dataset[@]}"
