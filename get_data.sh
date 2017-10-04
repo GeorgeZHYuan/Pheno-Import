@@ -20,16 +20,19 @@ function curlToPheno {
 	url=$1
 	args="-u $USER:$PSWD -X GET $url"
 
-	status=$(curl -o -i -s -w "%{http_code}\n" $args)
-	if [[ $status -eq 200 ]]; then
-		response=$($request)
-		echo $response
-	else
-		response=$status
-		echo $status
-	fi;
+	status=$(curl -o .temp -s -w "%{http_code}\n" $args)
+	
+	echo $status
+#	if [[ $status -eq 200 ]]; then
+#		response=$($request)
+#		echo $response
+#	else
+#		response=$status
+#		echo $status
+#	fi;
 
-	loggit "$request" "$response"
+	rm .temp
+#	loggit "$request" "$response"
 }
 
 function loggit {
