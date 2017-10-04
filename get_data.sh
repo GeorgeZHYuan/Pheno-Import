@@ -12,11 +12,15 @@ function getFamily {
 	echo $family
 }
 
-function curlPheno {
+function curlToPheno {
 	request="curl -u $USER:$PSWD -X GET $1"
+
 	response=$($request)
-	echo $response
-	loggit "$request" "$response"
+#	echo $response
+
+	status=$($request -I)
+	echo $status
+#	loggit "$request" "$response"
 }
 
 function loggit {
@@ -24,3 +28,4 @@ function loggit {
     echo "Command:" $1 >> $LOGFILE
     echo $2 $'\r' $'\r' >> $LOGFILE
 }
+
