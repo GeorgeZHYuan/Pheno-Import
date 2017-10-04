@@ -18,13 +18,5 @@ function curlToPheno {
 	fi;
 	
 	echo $response
-	loggit "$request" "$response"
+	curlLog "$request" "$status" "$($request)"
 }
-
-function loggit {
-    echo $(date '+%d/%m/%Y %H:%M:%S') >> $LOGFILE
-    echo "Command:" $1 >> $LOGFILE
-    echo $2 $'\r' $'\r' >> $LOGFILE
-}
-
-
