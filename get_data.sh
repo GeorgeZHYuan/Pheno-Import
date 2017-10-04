@@ -20,20 +20,3 @@ function curlToPheno {
 	echo $response
 	curlLog "$request" "$status" "$($request)"
 }
-
-function curlLog {
-	local request=$1
-	local status=$2
-	local response=$3
-	local logfiles=("$CURL_LOGFILE" "$LOGFILE")
-	
-	for logfile in "${logfiles[@]}"; do
-    	echo $(date '+%d/%m/%Y %H:%M:%S') >> "$logfile"
-    	echo "Command:" $request $'\r' >> "$logfile" 
-		echo "Status:" $status $'\r' >> "$logfile"
-    	echo "Response:" $'\r' $response $'\r' >> "$logfile"
-		echo  $'\r' $'\r' $'\r' >> "$logfile"
-	done
-}
-
-

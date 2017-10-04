@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source vars
+source ./loggit.sh
 
 i=0
 while IFS='' read -r line || [[ -n "$line" ]]; do
@@ -11,4 +12,3 @@ done < "$1"
 ./create_table.sh "${patients[@]}"
 
 #$PH_IMPORT_HOME/import-data/Clinical-data/load_clincial.sh
-
