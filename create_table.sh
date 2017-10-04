@@ -3,15 +3,18 @@
 . ./get_data.sh 
 
 patient_ids=("$@")
+i=0
 for patient_id in "${patient_ids[@]}"
 do
-	local patient=$(getPatient $patient_id)
-	addPatient $patient
-	echo "test"
+	patient_dataset[$i]=$(curlToPheno "patients" $patient_id $'\r') >> testfile.txt
+	i+=1
 done
 
-function addPatient {
-	echo "Oooooohohohoho"
-}
+for data in "${patient_dataset[@]}"
+do
+	echo $data
+done
+
+
 
 
