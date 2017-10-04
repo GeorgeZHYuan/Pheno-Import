@@ -18,13 +18,21 @@ function curlToPheno {
 	fi;
 	
 	echo $response
-	loggit "$request" "$response"
+	curlLog "$request" "$status" "$($request)" "$CURL_LOGFILE"
+	curlLog "$request" "$status" "$($request)" "$LOGFILE"
 }
 
-function loggit {
-    echo $(date '+%d/%m/%Y %H:%M:%S') >> $LOGFILE
-    echo "Command:" $1 >> $LOGFILE
-    echo $2 $'\r' $'\r' >> $LOGFILE
+function curlLog {
+	local request=$1
+	local status=$2
+	local response=$3
+	local log_directory=$4
+
+    echo $(date '+%d/%m/%Y %H:%M:%S') >> "$log_directory"
+    echo "Command:" $request $'\r' >> "$log_directory" 
+	echo "Status:" $status $'\r' >> "$log_directory"
+    echo "Response:" $'\r' $response $'\r' >> "$log_directory"
+	echo  $'\r' $'\r' $'\r' >> "$log_directory"
 }
 
 
