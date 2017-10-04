@@ -18,21 +18,22 @@ function curlToPheno {
 	fi;
 	
 	echo $response
-	curlLog "$request" "$status" "$($request)" "$CURL_LOGFILE"
-	curlLog "$request" "$status" "$($request)" "$LOGFILE"
+	curlLog "$request" "$status" "$($request)"
 }
 
 function curlLog {
 	local request=$1
 	local status=$2
 	local response=$3
-	local log_directory=$4
-
-    echo $(date '+%d/%m/%Y %H:%M:%S') >> "$log_directory"
-    echo "Command:" $request $'\r' >> "$log_directory" 
-	echo "Status:" $status $'\r' >> "$log_directory"
-    echo "Response:" $'\r' $response $'\r' >> "$log_directory"
-	echo  $'\r' $'\r' $'\r' >> "$log_directory"
+	local logfiles=("$CURL_LOGFILE" "$LOGFILE")
+	
+	for logfile in "${logfiles[@]}"; do
+    	echo $(date '+%d/%m/%Y %H:%M:%S') >> "$logfile"
+    	echo "Command:" $request $'\r' >> "$logfile" 
+		echo "Status:" $status $'\r' >> "$logfile"
+    	echo "Response:" $'\r' $response $'\r' >> "$logfile"
+		echo  $'\r' $'\r' $'\r' >> "$logfile"
+	done
 }
 
 
