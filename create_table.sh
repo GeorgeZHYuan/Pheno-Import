@@ -6,6 +6,7 @@ patient_ids=("$@")
 patient_dataset=()
 patient_added=()
 patient_ommited=()
+
 for patient_id in "${patient_ids[@]}"
 do
 	temp=$(curlToPheno "patients" $patient_id)

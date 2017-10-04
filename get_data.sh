@@ -12,6 +12,7 @@ function curlToPheno {
 	else
 		response=$status
 	fi;
+
 	if [ -e .temp ]; then 
 		rm .temp
 	fi;
