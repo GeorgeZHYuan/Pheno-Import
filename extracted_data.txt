@@ -1,1 +1,2 @@
-SUBJID	Patient_ID	Identifier	First_Name	Last_Name	Sex	Life_status	Birth_year	Birth_month	Birth_day	Death_year	Death_month	Death_date
+SUBJID	Patient_ID	Identifier	First_Name	Last_Name	Sex	Life_status	Birth_year	Birth_month	Birth_day	Death_year	Death_month	Death_date	
+P0000003	dff	cJhon	asdada	U	alive	2015	8	2	null	
