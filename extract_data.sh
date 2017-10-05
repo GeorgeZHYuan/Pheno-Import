@@ -9,7 +9,8 @@ declare -a arr=(".report_id" ".external_id" ".patient_name.first_name" ".patient
 
 data_JSON=("$@")
 
-
+rm extracted_data.txt
+cp new_study_template.txt extracted_data.txt
 
 a=1
 #data=0

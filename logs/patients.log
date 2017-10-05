@@ -43,3 +43,21 @@ Success: Patients found (2)
 - P0000004 
 Result: 2/4 patients added (50%)
   
+05/10/2017 19:12:04
+Success: Patients found (2) 
++ P0000001 
++ P0000002 
+Warning: Patients not found (2) 
+- P0000003 
+- P0000004 
+Result: 2/4 patients added (50%)
+  
+05/10/2017 19:12:12
+Success: Patients found (2) 
++ P0000001 
++ P0000002 
+Warning: Patients not found (2) 
+- P0000003 
+- P0000004 
+Result: 2/4 patients added (50%)
+  
