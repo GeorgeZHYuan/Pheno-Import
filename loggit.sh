@@ -43,7 +43,7 @@ function patientsLog {
 		done 
 
 		# log summary
-		echo $'\r'"Result: $patients_found/$patients_not_found patients added ("$(($patients_found * 100 / $patients_not_found))"%)" >> "$logfile_directory"
+		echo $'\r'"Result: $patients_found/${#patient_ids[@]} patients added ("$(($patients_found * 100 / ${#patient_ids[@]}))"%)" >> "$logfile_directory"
 		echo $'\r' $'\r '$'\r' >> "$logfile_directory"
 	done
 }
