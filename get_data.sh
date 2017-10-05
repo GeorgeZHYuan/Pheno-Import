@@ -1,26 +1,27 @@
 #!/bin/bash
 
-function getPatient {
-	url="$HOST:$PORT/rest/patients/$1"
-	local patient = $(curlPheno $url)
-	echo $patient
-}
+# Get JSON data from phenotips from curl command
+function curlToPheno {
+	local url=$HOST:$PORT/rest/$1/$2
+	local args="-u $USER:$PSWD -X GET $url"
+	local request="curl -s $args"
 
-function getFamily {
-	url="$HOST:$PORT/rest/patients/$1"
-	local family = $(curlPheno $url)
-	echo $family
-}
+	# get response headers
+	status=$(curl -o .temp -s -w "%{http_code}\n" $args);
+ 	if [ -e .temp ]; then
+		rm .temp
+	fi;	
 
-function curlPheno {
-	request="curl -u $USER:$PSWD -X GET $1"
-	response=$($request)
+	# check if response is successful
+	if [[ $status -eq 200 ]]; then 	
+		response=$($request)			# response set to JSON data on success
+	else
+		response=$status				# response set to error code on failure
+	fi;
+
+	# return response as an echo
 	echo $response
-	loggit "$request" "$response"
-}
 
-function loggit {
-    echo $(date '+%d/%m/%Y %H:%M:%S') >> $LOGFILE
-    echo "Command:" $1 >> $LOGFILE
-    echo $2 $'\r' $'\r' >> $LOGFILE
+	# log curl results
+	curlLog "$request" "$status" "$($request)"
 }

@@ -1,16 +1,26 @@
 #!/bin/bash
 
-. ./get-data.sh
+. ./get_data.sh 
 
-arr = $1
-for i in "${arr[@]}"
-do
-	local patient = $(getPatient ${arr[$i]})
-	addPatient $patient
+patient_ids=("$@")
+patient_dataset=()
+patients_found=()
+patients_ommited=()
+
+# Finds and stores patient JSON data array to patient_dataset
+for patient_id in "${patient_ids[@]}"; do			
+	data=$(curlToPheno "patients" $patient_id)		
+	if ! [[ "$data" =~ ^-?[0-9]+$ ]] ; then			# add to patient data array if valid data
+   		patient_dataset+=($data)
+		patients_found+=($patient_id)
+	else											# add to ommited array if invalid data
+		patients_ommited+=($patient_id)
+	fi	
 done
 
-function addPatient {
-	echo "Oooooohohohoho"
-}
+# Stats for Patient data 
+amount_found=${#patients_found[@]}					
+amount_not_found=${#patients_ommited[@]}
 
-
+# Log results (loggit.sh)
+patientsLog $amount_found $amount_not_found "${patients_found[@]}" "${patients_ommited[@]}"
