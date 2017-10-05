@@ -42,4 +42,4 @@ patient_data+="	"
 
 echo "${patient_data[@]}" >> extracted_data.txt
 
-echo -e "\t" >> extracted_data.txt
+#echo -e "\t" >> extracted_data.txt

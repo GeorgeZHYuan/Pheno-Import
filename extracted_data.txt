@@ -1,2 +1,4 @@
 SUBJID	Patient_ID	Identifier	First_Name	Last_Name	Sex	Life_status	Birth_year	Birth_month	Birth_day	Death_year	Death_month	Death_date	
-P0000003	dff	cJhon	asdada	U	alive	2015	8	2	null	
+1	P0000003	dff	cJhon	asdada	U	alive	2015	8	2	null	
+2	P0000005	asd	Mark	Ad	M	alive	2010	8	2	null	
+3	P0000008	abc	Pedro	As	M	alive	2000	8	2	null	
