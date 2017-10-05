@@ -9,20 +9,22 @@ declare -a arr=(".report_id" ".external_id" ".patient_name.first_name" ".patient
 
 data_JSON=("$@")
 
-patient_data=()
+
 
 a=1
 #data=0
 
 #Do a for loop to add the data by iteration
 for data in "${data_JSON[@]}"; do
+	patient_data=()
 	patient_data+=$a
 	patient_data+="	"
 	for label in "${arr[@]}"; do
 		patient_data+=$(jq -r $label $data)
 		patient_data+="	"
 	done
+	echo "${patient_data[@]}" >> extracted_data.txt
 	a=$(( $a + 1 ))
 done
 
-echo "${patient_data[@]}" >> extracted_data.txt
+
