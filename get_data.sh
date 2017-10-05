@@ -7,8 +7,11 @@ function curlToPheno {
 	local request="curl -s $args"
 
 	# get response headers
-	status=$(curl -o .temp -s -w "%{http_code}\n" $args); rm .temp
-	
+	status=$(curl -o .temp -s -w "%{http_code}\n" $args);
+ 	if [ -e .temp ]; then
+		rm .temp
+	fi;	
+
 	# check if response is successful
 	if [[ $status -eq 200 ]]; then 	
 		response=$($request)			# response set to JSON data on success

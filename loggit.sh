@@ -33,13 +33,13 @@ function patientsLog {
 		# log the patient data actually found
 		echo "Success: Patients found ($patients_found)" $'\r' >> "$logfile_directory"
 		for i in $(seq 1 $patients_found); do
-			echo + $patient_id $'\r' >> "$logfile_directory"
+			echo + ${patient_ids[$i-1]} $'\r' >> "$logfile_directory"
 		done
 
 		# log the patient data not found
 		echo $'\r'"Warning: Patients not found ($patients_not_found)" $'\r' >> "$logfile_directory"
 		for i in $(seq 1 $patients_not_found); do
-			echo - $patient_id $'\r' >> "$logfile_directory"
+			echo - ${patient_ids[$i+$patients_found-1]} $'\r' >> "$logfile_directory"
 		done 
 
 		# log summary
