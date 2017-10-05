@@ -11,7 +11,8 @@ patients_ommited=()
 for patient_id in "${patient_ids[@]}"; do			
 	data=$(curlToPheno "patients" $patient_id)		
 	if ! [[ "$data" =~ ^-?[0-9]+$ ]] ; then			# add to patient data array if valid data
-   		patient_dataset+=($data)
+		#echo $data
+   		patient_dataset+=("$data")
 		patients_found+=($patient_id)
 	else											# add to ommited array if invalid data
 		patients_ommited+=($patient_id)
