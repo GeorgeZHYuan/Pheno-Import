@@ -12,36 +12,17 @@ data_JSON=("$@")
 patient_data=()
 
 a=1
+#data=0
 
 #Do a for loop to add the data by iteration
-
-patient_data+=$a
-patient_data+="	"
-patient_data+=$(jq -r ${arr[0]} ${data_JSON[$i]})
-patient_data+="	"
-patient_data+=$(jq -r ${arr[1]} ${data_JSON[$i]})
-patient_data+="	"
-patient_data+=$(jq -r ${arr[2]} ${data_JSON[$i]})
-patient_data+="	"
-patient_data+=$(jq -r ${arr[3]} ${data_JSON[$i]})
-patient_data+="	"
-patient_data+=$(jq -r ${arr[4]} ${data_JSON[$i]})
-patient_data+="	"
-patient_data+=$(jq -r ${arr[5]} ${data_JSON[$i]})
-patient_data+="	"
-patient_data+=$(jq -r ${arr[6]} ${data_JSON[$i]})
-patient_data+="	"
-patient_data+=$(jq -r ${arr[7]} ${data_JSON[$i]})
-patient_data+="	"
-patient_data+=$(jq -r ${arr[8]} ${data_JSON[$i]})
-patient_data+="	"
-patient_data+=$(jq -r ${arr[9]} ${data_JSON[$i]})
-patient_data+="	"
-patient_data+=$(jq -r ${arr[10]} ${data_JSON[$i]})
-patient_data+="	"
-patient_data+=$(jq -r ${arr[11]} ${data_JSON[$i]})
-patient_data+="	"
-
-a=$(( $a + 1 ))
+for data in "${data_JSON[@]}"; do
+	patient_data+=$a
+	patient_data+="	"
+	for label in "${arr[@]}"; do
+		patient_data+=$(jq -r $label $data)
+		patient_data+="	"
+	done
+	a=$(( $a + 1 ))
+done
 
 echo "${patient_data[@]}" >> extracted_data.txt

@@ -22,5 +22,7 @@ done
 amount_found=${#patients_found[@]}					
 amount_not_found=${#patients_ommited[@]}
 
+./extract_data.sh "${patient_dataset[@]}"
+
 # Log results (loggit.sh)
 patientsLog $amount_found $amount_not_found "${patients_found[@]}" "${patients_ommited[@]}"
