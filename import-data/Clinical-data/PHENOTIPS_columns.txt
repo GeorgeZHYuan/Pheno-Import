@@ -1,0 +1,14 @@
+FILENAME	CATEGORY_CD	COL_NBR	DATA_LABEL	ALT_DATA_LABEL	CTRL_VOCAB_CODE
+PATIENT_clinical.txt		1	SUBJ_ID
+PATIENT_clinical.txt	Phenotips_data+Patient_information+Identification	2	Patient_ID		
+PATIENT_clinical.txt	Phenotips_data+Patient_information+Identification	3	Identifer		
+PATIENT_clinical.txt	Phenotips_data+Patient_information+Patient_name	4	First_Name		
+PATIENT_clinical.txt	Phenotips_data+Patient_information+Patient_name	5	Last_Name
+PATIENT_clinical.txt	Phenotips_data+Patient_information	6	Sex
+PATIENT_clinical.txt	Phenotips_data+Patient_information	7	Life_status
+PATIENT_clinical.txt	Phenotips_data+Patient_information+Birthdate	8	Birth_year
+PATIENT_clinical.txt	Phenotips_data+Patient_information+Birthdate	9	Birth_month
+PATIENT_clinical.txt	Phenotips_data+Patient_information+Birthdate	10	Birth_day
+PATIENT_clinical.txt	Phenotips_data+Patient_information+Deathdate	11	Death_year
+PATIENT_clinical.txt	Phenotips_data+Patient_information+Deathdate	12	Death_month
+PATIENT_clinical.txt	Phenotips_data+Patient_information+Deathdate	13	Death_date
