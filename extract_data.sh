@@ -10,8 +10,10 @@ declare -a arr=(".report_id" ".external_id" ".patient_name.first_name" ".patient
 subjID=1
 data_JSON=("$@")
 
-rm $DATA_UPLOAD_FILE
-cp new_study_template.txt $DATA_UPLOAD_FILE
+if [ -e $DATA_UPLOAD_FILE ]; then
+	rm $DATA_UPLOAD_FILE
+fi;
+cp $TABLE_TEMPLATE $DATA_UPLOAD_FILE
 
 #Do a for loop to add the data by iteration
 for data in "${data_JSON[@]}"; do

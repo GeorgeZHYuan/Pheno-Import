@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source vars
+source conf/vars
 source ./loggit.sh
 
 filename=$1
