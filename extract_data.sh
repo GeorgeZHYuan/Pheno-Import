@@ -11,7 +11,7 @@ subjID=1
 data_JSON=("$@")
 
 rm $DATA_UPLOAD_FILE
-cp new_study_template.txt $DATA_UPLOAD_FILE
+cp data/new_study_template.txt $DATA_UPLOAD_FILE
 
 #Do a for loop to add the data by iteration
 for data in "${data_JSON[@]}"; do
