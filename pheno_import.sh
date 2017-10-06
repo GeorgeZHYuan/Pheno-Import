@@ -16,4 +16,4 @@ done < "$filename"
 ./create_table.sh "${patients[@]}"
 
 # loads data to transmart
-#$PH_IMPORT_HOME/import-data/Clinical-data/load_clincial.sh
+$PH_IMPORT_HOME/import-data/Clinical-data/load_clinical.sh

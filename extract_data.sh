@@ -10,8 +10,8 @@ declare -a arr=(".report_id" ".external_id" ".patient_name.first_name" ".patient
 subjID=1
 data_JSON=("$@")
 
-rm extracted_data.txt
-cp new_study_template.txt extracted_data.txt
+rm $DATA_UPLOAD_FILE
+cp new_study_template.txt $DATA_UPLOAD_FILE
 
 #Do a for loop to add the data by iteration
 for data in "${data_JSON[@]}"; do
@@ -20,9 +20,12 @@ for data in "${data_JSON[@]}"; do
 	for label in "${arr[@]}"; do
 		res=$(echo $data | jq  -r $label )
 		if ! [[ "$res" == null ]]; then
-			patient_data+=$res"	"
+			patient_data+=$res
 		fi;
+		patient_data+="	"
 	done
-	echo "${patient_data[@]}" >> extracted_data.txt
+	echo "${patient_data[@]}" >> $DATA_UPLOAD_FILE
 	subjID=$(( $subjID + 1 ))
 done
+
+
