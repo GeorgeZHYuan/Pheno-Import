@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source conf/vars
-source ./loggit.sh
+source logs/loggit.sh
 
 patients=()
 
