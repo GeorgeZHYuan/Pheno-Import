@@ -34,7 +34,7 @@ for i, letter in enumerate(line):
 	else:
 		word += letter
 
-column_file_labels = [['FILENAME', 'CATEGORY_CD', 'COL_NBR', 'DATA_LABEL', 'ALT_DATA_LABEL', 'CTRL_VOCAB_CODE']]
+column_file_text = [['FILENAME', 'CATEGORY_CD', 'COL_NBR', 'DATA_LABEL', 'ALT_DATA_LABEL', 'CTRL_VOCAB_CODE']]
 for i, label in enumerate(labels):
 	row = [sys.argv[3],'\t',str(i+1), str(label), '\t','\t']
 	for j, letter in enumerate(reversed(label)):
@@ -42,10 +42,10 @@ for i, label in enumerate(labels):
 			row[1] = str(label[:-j-1])
 			row[3] = str(label[-j:])
 			break
-	column_file_labels.append(row)
+	column_file_text.append(row)
 
 with open(sys.argv[3], 'a') as column_file:
-	for row in column_file_labels:
+	for row in column_file_text:
 		for word in row:
 			column_file.write(word + '\t')
 		column_file.write('\n')

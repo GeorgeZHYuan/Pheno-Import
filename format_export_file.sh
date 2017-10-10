@@ -5,5 +5,7 @@ if [ -e column.tmp ]; then
 fi;
 touch column.tmp
 
-python extract_export_file_data.py "Public_Studies" "TEST_STUDY" "column.tmp"
-#python extract_export_file_data.py "Public_Studies" "PHENO_TEST" "column.tmp"
+python create_column_file.py "Public_Studies" "TEST_STUDY" "column.tmp"
+#python create_column_file.py "Public_Studies" "PHENO_TEST" "column.tmp"
+
+
