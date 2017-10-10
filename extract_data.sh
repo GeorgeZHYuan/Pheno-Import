@@ -5,11 +5,12 @@
 #Software jq needs to be downloaded
 #sudo apt-get install jq
 
-declare -a arr=(".report_id" ".external_id" ".patient_name.first_name" ".patient_name.last_name" ".sex" ".life_status" ".date_of_birth.year" ".date_of_birth.month" ".date_of_birth.day" ".date_of_death.year" ".date_of_death.month" ".date_of_death.day")
+declare -a arr=(".report_id" ".external_id" ".patient_name.first_name" ".patient_name.last_name" ".sex" ".life_status" ".date_of_birth.year" ".date_of_birth.month" ".date_of_birth.day" ".date_of_death.year" ".date_of_death.month" ".date_of_death.day" ".ethnicity.maternal_ethnicity" ".ethnicity.paternal_ethnicity")
 
 subjID=1
 data_JSON=("$@")
 
+#if file exists, then remove it
 if [ -e $DATA_UPLOAD_FILE ]; then
 	rm $DATA_UPLOAD_FILE
 fi;
@@ -29,5 +30,3 @@ for data in "${data_JSON[@]}"; do
 	echo "${patient_data[@]}" >> $DATA_UPLOAD_FILE
 	subjID=$(( $subjID + 1 ))
 done
-
-
