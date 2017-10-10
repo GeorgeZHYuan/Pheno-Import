@@ -1,7 +1,0 @@
-Subject ID	\Public Studies\PATIENT\Patient Information\Birthdate\Birth day\	\Public Studies\PATIENT\Patient Information\Birthdate\Birth month\	\Public Studies\PATIENT\Patient Information\Birthdate\Birth year\	\Public Studies\PATIENT\Patient Information\Deathdate\Death date\	\Public Studies\PATIENT\Patient Information\Deathdate\Death month\	\Public Studies\PATIENT\Patient Information\Deathdate\Death year\	\Public Studies\PATIENT\Patient Information\Identification\Identifer\	\Public Studies\PATIENT\Patient Information\Identification\Patient ID\	\Public Studies\PATIENT\Patient Information\Life status\	\Public Studies\PATIENT\Patient Information\Name\First Name\	\Public Studies\PATIENT\Patient Information\Name\Last Name\	\Public Studies\PATIENT\Patient Information\Sex\
-1	1.00000	1.00000	1990.00000	1.00000	1.00000	2017.00000	ImportPatient	P0000009	deceased	Imported	Patient	M
-5	0.00000	0.00000	0.00000	0.00000	0.00000	0.00000	Homunculus	P0000013	alive	Petrificus	Botohokochicus	unknown
-2	24.00000	12.00000	1990.00000				Guy2	P0000010	alive	Guy	Number2	M
-4	0.00000	0.00000	0.00000				Immortal	P0000012	alive	Tang	Seng	M
-6	1.00000	1.00000	2000.00000	1.00000	1.00000	2000.00000	BadLuckBrian	P0000014	deceased	Brian	Badluck	other
-3	23.00000	8.00000	2000.00000				Guy3	P0000011	alive	Theguy	Number4	F
