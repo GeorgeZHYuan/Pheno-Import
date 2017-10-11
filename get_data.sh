@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. ./curl_request.sh 
-
 function get_patient_data {
 	local patient_ids=("$@")
 	local patients_found=()
