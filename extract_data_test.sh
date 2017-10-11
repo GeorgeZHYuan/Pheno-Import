@@ -16,6 +16,7 @@ data_JSON=("$@")
 	patient_data+=$subjID"	"
 	for label in "${arr[@]}"; do
 		#res=$(echo $data | jq  -r $label )
+		test=$(jq '.ethnicity.maternal_ethnicity | type' sample_data.txt)
 		res=$(jq -r $label $data_JSON)
 		if ! [[ "$res" == null ]]; then
 			patient_data+=$res
@@ -26,11 +27,8 @@ data_JSON=("$@")
 	subjID=$(( $subjID + 1 ))
 #done
 
-arrayCheck=()
-arrayCheck+=$(jq -r .report_id[] sample_data.txt)
+if ["$test" == "array"]; then 
+	echo $test
+fi;
 
-#if [ "$arrayCheck" == "jq: error: Cannot iterate over string" ]; then
-#	echo "Error occured"
-#fi
-
-#echo -e $arrayCheck
+#How to check if string matches, make if statement work properly

@@ -7,28 +7,27 @@ wjson = open('sample_data.txt','r').read()
 wjdata = json.loads(wjson)
 subjID = 1
 
-dataCategories = ["report_id", "external_id", "patient_name"]
+dataCategories = [wjdata.get("report_id"), wjdata.get("external_id"), wjdata.get('patient_name',{}).get('first_name'), 
+	wjdata.get('patient_name',{}).get('last_name'), wjdata.get("sex"), wjdata.get("life_status"), wjdata.get("date_of_birth",{}).get("year"),
+	wjdata.get("date_of_birth",{}).get("month"), wjdata.get("date_of_birth",{}).get("day"), wjdata.get("date_of_death",{}).get("year"), 
+	wjdata.get("date_of_death",{}).get("month"), wjdata.get("date_of_death",{}).get("day")]
 
 extractedData.write('\n')
 
-#Make for-loop for elements in the array
-i = 0
+i=0
+j=0
 extractedData.write("{}".format(subjID))
-
-#while i < len(dataCategories):
-#	if dataCategories[i] in wjson:
-#		extractedData.write('\t' + wjdata[dataCategories[i]])
-#		i+=1
-#	else:
-#		i+=1
 
 while i < len(dataCategories):
 	try:
-		extractedData.write('\t' + wjdata[dataCategories[i]])
+		temp = dataCategories[i]
+		extractedData.write('\t' + "{}".format(temp))
 		i+=1
 	except:
 		i+=1
 
 subjID+=1
+
+print wjdata.get("ethnicity",{}).get("maternal_ethnicity")
 
 extractedData.close()
