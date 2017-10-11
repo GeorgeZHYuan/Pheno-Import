@@ -11,7 +11,7 @@ if [ -e $ADJ_COLUMN_FILE ]; then
 fi;
 touch $ADJ_COLUMN_FILE
 
-python create_column_file.py "Public_Studies" "TEST_STUDY" $ADJ_COLUMN_FILE $TRANSMART_EXPORT_FILE
+python create_clinical_column_file.py "Public_Studies" "TEST_STUDY" $ADJ_COLUMN_FILE $TRANSMART_EXPORT_FILE
 #python create_column_file.py "Public_Studies" "PHENO_TEST" $ADJ_COLUMN_FILE $TRANSMART_EXPORT_FILE
 
 
