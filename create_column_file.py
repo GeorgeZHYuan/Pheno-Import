@@ -1,7 +1,7 @@
 import sys
 import bisect
 
-line = open('data/export_file.tmp').readline()
+line = open(sys.argv[4]).readline()
 labels = []
 extra=sys.argv[1]+"+"+sys.argv[2]+"+"
 sbj_id_position = -1
@@ -49,5 +49,6 @@ with open(sys.argv[3], 'a') as column_file:
 		for word in row:
 			column_file.write(word + '\t')
 		column_file.write('\n')
+
 
 
