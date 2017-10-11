@@ -1,18 +1,19 @@
 #!/bin/bash
 
+# Initialize
 source conf/vars
 source logs/loggit.sh
+. ./get_data.sh
 
-patients=()
+patient_ids=()
+patient_ids+=('P0000001')
+patient_ids+=('P0000002')
+patient_ids+=('P0000003')
+patient_ids+=('P0000004')
 
-# Aquires a list of patient IDs from "filename"
-# This is the list of patients that the user wants to import
-while IFS='' read -r line || [[ -n "$line" ]]; do	# Iterates through "filename" line by line until eof
-    patients+=($line)								# Adds each line as new element to patients array
-done < "$PATIENT_ID_LIST"
+# Get the phenotips data
+patient_dataset=($(get_patient_data "${patient_ids[@]}"))
 
-# Creates patient data tables according to patients ID in the patients array
-./upload_new_study.sh "${patients[@]}"
+# Create patient data table for new study
+./upload_new_study.sh "${patient_dataset[@]}"
 
-# loads data to transmart
-$PH_IMPORT_HOME/import-data/Clinical-data/load_clinical.sh
