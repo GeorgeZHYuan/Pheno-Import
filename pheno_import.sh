@@ -1,18 +1,19 @@
 #!/bin/bash
 
 # Initialize
-source conf/vars
+source conf/*
 
 . ./logs/loggit.sh
 . ./get_data.sh
 . ./curl_request.sh 
 
-import_method="existing"
+# Determine upload instructions
+import_method="new"
 patient_ids=('P0000001' 'P0000002' 'P0000003' 'P0000004')
-patient_dataset=()
 
 # Get the patient data from phenotips
-patient_dataset=($(get_patient_data "${patient_ids[@]}"))
+get_patient_data "${patient_ids[@]}"
+patient_dataset=($(<'tmp/PATIENT_JSONS.tmp'))
 
 # Create tables for upload
 if [[ $import_method == "new" ]]; then
@@ -20,7 +21,7 @@ if [[ $import_method == "new" ]]; then
 	./create_new_study_clinical_file.sh "${patient_dataset[@]}"
 	
 elif [[ $import_method == "existing" ]]; then
-	echo "Creating tables for existing study import"
+	echo -e "${LCYAN}Creating${NC} tables for existing study import:..."
 	./create_tables_existing_study.sh "${patient_dataset[@]}"
 
 else
@@ -29,5 +30,6 @@ else
 
 fi;
 
-## Upload to transmart
-#./upload_data.sh
+# Upload to transmart
+echo -e "${LCYAN}Uploading${NC} data to transmart"
+./upload_data.sh

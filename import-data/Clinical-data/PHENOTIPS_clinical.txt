@@ -1,3 +1,3 @@
 SUBJID	Patient_ID	Identifier	First_Name	Last_Name	Sex	Life_status	Birth_year	Birth_month	Birth_day	Death_year	Death_month	Death_date												
-1	P0000001	ImportPatient	Imported	Patients	M	deceased	1990	1	1	2017	1	1	
-2	P0000002	dff	cJhon	asdada	U	alive	2015	8	2				
+1	P0000002	dff	cJhon	asdada	U	alive	2015	8	2				
+2	P0000003	ImportPatient	Imported	Patients	M	deceased	1990	1	1	2017	1	1	

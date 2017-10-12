@@ -2,7 +2,7 @@ ADJ_COLUMN_FILE=$PH_IMPORT_HOME/tmp/adjusted_column.tmp
 ADJ_CLINICAL_FILE=$PH_IMPORT_HOME/tmp/adjusted_clinical.tmp
 TRANSMART_EXPORT_FILE=$PH_IMPORT_HOME/tmp/export_file.tmp
 
-sed 's/\"//g' data/data_clinical.tsv > $TRANSMART_EXPORT_FILE
+sed 's/\"//g' data_clinical.tsv > $TRANSMART_EXPORT_FILE
 
 if [ -e $ADJ_COLUMN_FILE ]; then 
 	rm $ADJ_COLUMN_FILE 

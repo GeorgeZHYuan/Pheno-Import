@@ -7,28 +7,26 @@ function get_patient_data {
 	local patient_dataset=()
 
 	# Finds and stores patient JSON data array to patient_dataset
-	for patient_id in "${patient_ids[@]}"; do			
+	echo -e "${LCYAN}Retrieving${NC} patient data..."
+	for patient_id in "${patient_ids[@]}"; do
+		echo -ne "requesting for patient $patient_id: "			
 		data=$(curlToPheno "patients" $patient_id)		
 		if ! [[ "$data" =~ ^-?[0-9]+$ ]] ; then			# add to patient data array if valid data
-	   		patient_dataset+=("$data")
+	   		patient_dataset+=($(echo $data | tr -d ' '))
 			patients_found+=($patient_id)
+			echo -e "${LGREEN}Success${NC}"
 		else											# add to ommited array if invalid data
 			patients_ommited+=($patient_id)
+			echo -e "${LRED}Failed${NC}"
 		fi	
 	done
+	echo "${patient_dataset[@]}" > 'tmp/PATIENT_JSONS.tmp'
 
 	# Stats for Patient data 
 	amount_found=${#patients_found[@]}					
 	amount_not_found=${#patients_ommited[@]}
-	
+
 	# Log results (loggit.sh)
 	patientsLog $amount_found $amount_not_found "${patients_found[@]}" "${patients_ommited[@]}"
-
-	# remove spaces
-	for i in $(seq 0 $((${#patient_dataset[@]} - 1))); do
-		patient_dataset[$i]=$(echo ${patient_dataset[$i]} | tr -d ' ')
-	done
-
-	echo "${patient_dataset[@]}"
 }
 
