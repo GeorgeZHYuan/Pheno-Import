@@ -13,7 +13,7 @@ data_JSON=("$@")
 if [ -e $DATA_UPLOAD_FILE ]; then
 	rm $DATA_UPLOAD_FILE
 fi;
-cp $TABLE_TEMPLATE $DATA_UPLOAD_FILE
+cp $CLINICAL_LABELS $DATA_UPLOAD_FILE
 
 #Do a for loop to add the data by iteration
 for data in "${data_JSON[@]}"; do

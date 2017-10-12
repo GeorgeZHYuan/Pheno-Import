@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source conf/vars
-source ./loggit.sh
+source logs/loggit.sh
 
 patients=()
 
@@ -12,7 +12,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do	# Iterates through "filename" 
 done < "$PATIENT_ID_LIST"
 
 # Creates patient data tables according to patients ID in the patients array
-./create_table.sh "${patients[@]}"
+./upload_new_study.sh "${patients[@]}"
 
 # loads data to transmart
 $PH_IMPORT_HOME/import-data/Clinical-data/load_clinical.sh
