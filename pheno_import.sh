@@ -2,15 +2,14 @@
 
 # Initialize
 source conf/vars
-source logs/loggit.sh
 
+. ./logs/loggit.sh
 . ./get_data.sh
 . ./curl_request.sh 
 
-
-
 import_method="existing"
 patient_ids=('P0000001' 'P0000002' 'P0000003' 'P0000004')
+patient_dataset=()
 
 # Get the patient data from phenotips
 patient_dataset=($(get_patient_data "${patient_ids[@]}"))
