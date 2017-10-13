@@ -1,37 +1,13 @@
-SUBJID	Patient_ID	Identifier	First_Name	Last_Name	Sex	Life_status	Birth_year	Birth_month	Birth_day	Death_year	Death_month	Death_date	Maternal_Ethnicity	Paternal_Ethnicity
+SUBJID	Patient_ID	Identifier	First_Name	Last_Name	Sex	Life_status	Birth_year	Birth_month	Birth_day	Death_year	Death_month	Death_date Maternal_Ethnicity	Paternal_Ethnicity
 
-1	P0000001	Patient0
-1	P0000001	Patient0
-1	P0000001	Patient0
-1	P0000001	Patient0
-1	P0000001	Patient0
-1	P0000001	Patient0
-1	P0000001	Patient0
-1	P0000001	Patient0
-1	P0000001	Patient0
-1	report_id	external_id	patient_name	Jandro
-1	report_id	external_id	patient_name	Jandro
-1	P0000001	Patient0	Jandro
-1	P0000001	Patient0	Jandro	Alleh	M	alive
-1	P0000001	Patient0	Jandro	Alleh	M	alive
-1	P0000001	Patient0	Jandro	Alleh	M	alive
-1	P0000001	Patient0	Jandro	Alleh	M	alive
-1	P0000001	Patient0	Jandro	Alleh	M	alive
-1	P0000001	Jandro	Alleh	M	alive
-1	P0000001	Patient0	Jandro	Alleh	M	alive
-1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6
+1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None	[u'African Americans', u'Biharis']	[u'Arabs', u'Luba']
 1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None
-1	P0000001	Import Patient	Imported	Patients	M	deceased	1990	1	1	2017	1	1
+1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None	[u'African Americans', u'Biharis']	[u'Arabs', u'Luba']
+1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None	[u'African Americans', u'Biharis']	[u'Arabs', u'Luba']
+1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None	[u'African Americans', u'Biharis']	[u'Arabs', u'Luba']
 1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None
 1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None
-1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None
-1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None
-1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None
-1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6				African Americans	Arabs	
-1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6				African Americans	Arabs	
-1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6				African Americans	Arabs	
-1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6				African Americans	Arabs	
-1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6				African Americans	Arabs	
-1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6				African Americans	Arabs	
-1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6				African Americans	Arabs	
-1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6				African Americans	Arabs	
+1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None	African Americans	Biharis	Arabs	Luba
+
+1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None	African Americans	Biharis	Arabs	Luba
+1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None	African Americans	Biharis	Arabs	Luba
