@@ -1,18 +1,35 @@
 #!/bin/bash
 
-source conf/vars
-source ./loggit.sh
+# Initialize
+source conf/*
 
-patients=()
+. ./logs/loggit.sh
+. ./get_data.sh
+. ./curl_request.sh 
 
-# Aquires a list of patient IDs from "filename"
-# This is the list of patients that the user wants to import
-while IFS='' read -r line || [[ -n "$line" ]]; do	# Iterates through "filename" line by line until eof
-    patients+=($line)								# Adds each line as new element to patients array
-done < "$PATIENT_ID_LIST"
+# Determine upload instructions
+import_method="new"
+patient_ids=('P0000001' 'P0000002' 'P0000003' 'P0000004')
 
-# Creates patient data tables according to patients ID in the patients array
-./create_table.sh "${patients[@]}"
+# Get the patient data from phenotips
+get_patient_data "${patient_ids[@]}"
+patient_dataset=($(<'tmp/PATIENT_JSONS.tmp'))
 
-# loads data to transmart
-$PH_IMPORT_HOME/import-data/Clinical-data/load_clinical.sh
+# Create tables for upload
+if [[ $import_method == "new" ]]; then
+	echo "Creating tables for new study import"
+	./create_new_study_clinical_file.sh "${patient_dataset[@]}"
+	
+elif [[ $import_method == "existing" ]]; then
+	echo -e "${LCYAN}Creating${NC} tables for existing study import:..."
+	./create_tables_existing_study.sh "${patient_dataset[@]}"
+
+else
+	echo "Error: Invalid upload method."
+	echo "Warning: Please make sure the import_method variable is set correctly."
+
+fi;
+
+# Upload to transmart
+echo -e "${LCYAN}Uploading${NC} data to transmart"
+./upload_data.sh
