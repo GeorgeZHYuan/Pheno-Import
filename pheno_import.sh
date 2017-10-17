@@ -12,7 +12,7 @@ import_method="new"
 patient_ids=('P0000001' 'P0000002' 'P0000003' 'P0000004')
 
 # Get the patient data from phenotips
-get_patient_data "${patient_ids[@]}"
+get_patient_data "${patient_ids[@]}" # Technically calling this function will create table txt file with Phenotips data
 patient_dataset=($(<'tmp/PATIENT_JSONS.tmp'))
 
 # Create tables for upload

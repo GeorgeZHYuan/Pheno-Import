@@ -15,6 +15,7 @@ print inFile
 #with open(inFile,'r') as i:
 #    lines = i.readlines()
 
+# Input a variable wwith a string with the JSON stored in it
 def convertJSON(data):
 	
 	#wjson = open(data,'r').read()	
@@ -48,6 +49,6 @@ def convertJSON(data):
 					file.write('\t')
 			file.write('\n')
 			
-#convertJSON(inFile)
+convertJSON(inFile)
 
 extractedData.close()

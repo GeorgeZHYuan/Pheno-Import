@@ -1,5 +1,7 @@
 #!/bin/bash
 
+input=${"@"}
+
 function get_patient_data {
 	local patient_ids=("$@")
 	local patients_found=()
@@ -10,9 +12,10 @@ function get_patient_data {
 	echo -e "${LCYAN}Retrieving${NC} patient data..."
 	for patient_id in "${patient_ids[@]}"; do
 		echo -ne "requesting for patient $patient_id: "			
-		data=$(curlToPheno "patients" $patient_id)		
+		data=$(curlToPheno "patients" $patient_id)		# curls content of phenotips address into 'data' variable
 		if ! [[ "$data" =~ ^-?[0-9]+$ ]] ; then			# add to patient data array if valid data
-	   		patient_dataset+=($(echo $data | tr -d ' '))
+	   		python extract_data.py $data 
+			patient_dataset+=($data)
 			patients_found+=($patient_id)
 			echo -e "${LGREEN}Success${NC}"
 		else											# add to ommited array if invalid data
