@@ -1,5 +1,4 @@
-SUBJID	Patient_ID	Identifier	First_Name	Last_Name	Sex	Life_status	Birth_year	Birth_month	Birth_day	Death_year	Death_month	Death_date Maternal_Ethnicity	Paternal_Ethnicity
-
+SUBJID	Identifier	First_Name	Last_Name	Sex	Life_status	Birth_year	Birth_month	Birth_day	Death_year	Death_month	Death_date Maternal_Ethnicity	Paternal_Ethnicity
 1	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None	African Americans	Arabs
 1													Chinese
 1														Luba
@@ -7,4 +6,11 @@ SUBJID	Patient_ID	Identifier	First_Name	Last_Name	Sex	Life_status	Birth_year	Bir
 1												
 1	P0000001	Import Patient	Imported	Patients	M	deceased	1990	1	1	2017	1	1	African-America	Russians
 1	P0000001	Import Patient	Imported	Patients	M	deceased	1990	1	1	2017	1	1	African-America	Russians
+
+
+
+
+
+
+
 
