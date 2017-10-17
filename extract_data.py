@@ -8,6 +8,8 @@ extractedData = open('extracted_data.txt', 'a+')
 #wjdata = json.loads(wjson)
 inFile = sys.argv[1]
 
+print inFile
+
 #print str(sys.argv)
 
 #with open(inFile,'r') as i:
@@ -15,8 +17,8 @@ inFile = sys.argv[1]
 
 def convertJSON(data):
 	
-	wjson = open(data,'r').read()	
-	wjdata = json.loads(wjson)
+	#wjson = open(data,'r').read()	
+	wjdata = json.loads(data)
 
 	dataCategories = [wjdata.get("report_id"), wjdata.get("external_id"), wjdata.get('patient_name',{}).get('first_name'), 
 		wjdata.get('patient_name',{}).get('last_name'), wjdata.get("sex"), wjdata.get("life_status"), wjdata.get("date_of_birth",{}).get("year"),
@@ -46,6 +48,6 @@ def convertJSON(data):
 					file.write('\t')
 			file.write('\n')
 			
-convertJSON(inFile)
+#convertJSON(inFile)
 
 extractedData.close()

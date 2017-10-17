@@ -1,27 +1,31 @@
 #!/bin/bash
 
-# Get JSON data from phenotips from curl command
-function curlToPheno {
-	local url=$HOST:$PORT/rest/$1/$2
-	local args="-u $USER:$PSWD -X GET $url"
-	local request="curl -s $args"
+function get_patient_data {
+	local patient_ids=("$@")
+	local patients_found=()
+	local patients_ommited=()
+	local patient_dataset=()
 
-	# get response headers
-	status=$(curl -o .temp -s -w "%{http_code}\n" $args);
- 	if [ -e .temp ]; then
-		rm .temp
-	fi;	
+	# Finds and stores patient JSON data array to patient_dataset
+	echo -e "${LCYAN}Retrieving${NC} patient data..."
+	for patient_id in "${patient_ids[@]}"; do
+		echo -ne "requesting for patient $patient_id: "			
+		data=$(curlToPheno "patients" $patient_id)		
+		if ! [[ "$data" =~ ^-?[0-9]+$ ]] ; then			# add to patient data array if valid data
+	   		patient_dataset+=($(echo $data | tr -d ' '))
+			patients_found+=($patient_id)
+			echo -e "${LGREEN}Success${NC}"
+		else											# add to ommited array if invalid data
+			patients_ommited+=($patient_id)
+			echo -e "${LRED}Failed${NC}"
+		fi	
+	done
+	echo "${patient_dataset[@]}" > 'tmp/PATIENT_JSONS.tmp'
 
-	# check if response is successful
-	if [[ $status -eq 200 ]]; then 	
-		response=$($request)			# response set to JSON data on success
-	else
-		response=$status				# response set to error code on failure
-	fi;
+	# Stats for Patient data 
+	amount_found=${#patients_found[@]}					
+	amount_not_found=${#patients_ommited[@]}
 
-	# return response as an echo
-	echo $response
-
-	# log curl results
-	curlLog "$request" "$status" "$($request)"
+	# Log results (loggit.sh)
+	patientsLog $amount_found $amount_not_found "${patients_found[@]}" "${patients_ommited[@]}"
 }
