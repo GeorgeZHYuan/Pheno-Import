@@ -32,7 +32,7 @@ def pySQL (query, args=[]):
 	sql_map = {}
 	for i, c_label in enumerate(table[0]):
 		column_temp=[]		
-		for j in range (1, len(table)-1):
+		for j in range (1, len(table)):
 			column_temp.append(table[j][i])
 		sql_map[c_label] = column_temp
 
