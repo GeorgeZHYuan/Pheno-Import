@@ -30,6 +30,8 @@ def convertJSON(data):
 
 	with open('import-data/Clinical-data/PHENOTIPS_clinical.txt', 'a+') as file:
 		max_array_size = 1
+		file.write(wjdata.get("report_id"))
+		file.write('\t')
 		for label in dataCategories:
 			if (isinstance(label, list)):
 				max_array_size = max(max_array_size, len(label))
@@ -39,7 +41,7 @@ def convertJSON(data):
 		file.write('\n')
 		for j in range(1, max_array_size):
 			file.write(str(dataCategories[0])+'\t')
-			for label2 in dataCategories[1:]:
+			for label2 in dataCategories[0:]:
 				if (isinstance(label2, list)):
 					if len(label2) > j:
 						file.write(str(label2[j])+'\t')

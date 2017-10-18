@@ -4,6 +4,6 @@ SUBJID	Patient_ID	Identifier	First_Name	Last_Name	Sex	Life_status	Birth_year	Bir
 4	P0000004	Import	Imported	Oh	F	deceased	1532	1	1	5263	1	5
 5	P0000005	Adcw	acas	Oh	F	deceased	1900	4	3	2031	1	5
 6	P0000006	cvwa	Jhon	CCC	M	alive	1998	8	2
-P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None	African Americans	Arabs	
-P0000001												Korean	Luba	
-P0000001												Japanese	
+P0000001	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None	African Americans	Arabs	
+P0000001													Korean	Luba	
+P0000001													Japanese	
