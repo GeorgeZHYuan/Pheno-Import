@@ -1,9 +1,9 @@
-PH_IMPORT_HOME=/home/transmart/Pheno-Import
+PH_IMPORT_HOME=/home/transmart/Downloads/Pheno-Import
 
 USER=Admin
 PSWD=admin
 HOST=localhost
-PORT=10000
+PORT=6363
 
 LOGFILE=$PH_IMPORT_HOME/logs/main.log
 CURL_LOGFILE=$PH_IMPORT_HOME/logs/curl.log
@@ -14,7 +14,6 @@ KITCHEN=$HOME/transmart/transmart-data/env/data-integration/kitchen.sh
 
 PATIENT_ID_LIST=$PH_IMPORT_HOME/data/patient_ids.txt
 DATA_UPLOAD_FILE=$PH_IMPORT_HOME/import-data/Clinical-data/PHENOTIPS_clinical.txt
+TABLE_TEMPLATE=$PH_IMPORT_HOME/data/phenotips_table_template.txt
 
-CLINICAL_LABELS=$PH_IMPORT_HOME/templates/phenotips_clinincal_labels_template.txt
-
-export PH_IMPORT_HOME USER PSWD LOGFILE CURL_LOGFILE PATIENTS_LOGFILE HOST PORT KETTLE_JOBS KITCHEN PATIENT_ID_LIST DATA_UPLOAD_FILE CLINICAL_LABELS
+export PH_IMPORT_HOME USER PSWD LOGFILE CURL_LOGFILE PATIENTS_LOGFILE HOST PORT KETTLE_JOBS KITCHEN PATIENT_ID_LIST DATA_UPLOAD_FILE TABLE_TEMPLATE

@@ -9,12 +9,12 @@ function curlLog {
 	
 	for logfile_directory in "${logfile_directories[@]}"; do
 		# log the date/time
-    	echo $(date '+%d/%m/%Y %H:%M:%S') >> "$logfile_directory"
+    		echo $(date '+%d/%m/%Y %H:%M:%S') >> "$logfile_directory"
 		
 		# log the curl response
-    	echo "Command:" $request $'\r' >> "$logfile_directory" 
+    		echo "Command:" $request $'\r' >> "$logfile_directory" 
 		echo "Status:" $status $'\r' >> "$logfile_directory"
-    	echo "Response:" $'\r' $response $'\r' >> "$logfile_directory"
+    		echo "Response:" $'\r' $response $'\r' >> "$logfile_directory"
 		echo  $'\r' $'\r' $'\r' >> "$logfile_directory"
 	done
 }

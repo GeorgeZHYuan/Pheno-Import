@@ -1,20 +1,24 @@
 #!/bin/bash
 
-function get_patient_data {
+function setup_clinical_file {
 	local patient_ids=("$@")
 	local patients_found=()
 	local patients_ommited=()
 	local patient_dataset=()
 
-	# Finds and stores patient JSON data array to patient_dataset
+	# Finds and stores patient JSON data and create clinincal file
 	echo -e "${LCYAN}Retrieving${NC} patient data..."
 	for patient_id in "${patient_ids[@]}"; do
 		echo -ne "requesting for patient $patient_id: "			
-		data=$(curlToPheno "patients" $patient_id)		
-		if ! [[ "$data" =~ ^-?[0-9]+$ ]] ; then			# add to patient data array if valid data
-	   		patient_dataset+=($(echo $data | tr -d ' '))
-			patients_found+=($patient_id)
+		data=$(curlToPheno "patients" $patient_id)		# curls content of phenotips address into 'data' variable
+		#echo $data 
+		if ! [[ "$data" =~ ^-?[0-9]+$ ]] ; then			# add to patient data array if valid data 
+			echo -e "${LGREEN}Success${NC}" 		
+			python extract_data.py "$data" 
+			#echo $data
 			echo -e "${LGREEN}Success${NC}"
+			patient_dataset+=($data)
+			patients_found+=($patient_id)
 		else											# add to ommited array if invalid data
 			patients_ommited+=($patient_id)
 			echo -e "${LRED}Failed${NC}"
@@ -29,4 +33,3 @@ function get_patient_data {
 	# Log results (loggit.sh)
 	patientsLog $amount_found $amount_not_found "${patients_found[@]}" "${patients_ommited[@]}"
 }
-

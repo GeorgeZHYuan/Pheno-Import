@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Initialize
-source conf/*
+source conf/vars
+source conf/colors
 
 . ./logs/loggit.sh
 . ./get_data.sh
@@ -12,22 +13,12 @@ import_method="new"
 patient_ids=('P0000001' 'P0000002' 'P0000003' 'P0000004')
 
 # Get the patient data from phenotips
-get_patient_data "${patient_ids[@]}"
-patient_dataset=($(<'tmp/PATIENT_JSONS.tmp'))
+setup_clinical_file "${patient_ids[@]}"
 
 # Create tables for upload
-if [[ $import_method == "new" ]]; then
-	echo "Creating tables for new study import"
-	./create_new_study_clinical_file.sh "${patient_dataset[@]}"
-	
-elif [[ $import_method == "existing" ]]; then
-	echo -e "${LCYAN}Creating${NC} tables for existing study import:..."
-	./create_tables_existing_study.sh "${patient_dataset[@]}"
-
-else
-	echo "Error: Invalid upload method."
-	echo "Warning: Please make sure the import_method variable is set correctly."
-
+if [[ $import_method == "existing" ]]; then
+	echo -e "${LCYAN}Adjusting${NC} to existing study :..."
+	#./create_tables_existing_study.sh "${patient_dataset[@]}"
 fi;
 
 # Upload to transmart
