@@ -1,0 +1,4 @@
+FILENAME	COL_NBR	VALUE
+PHENOTIPS_clinical.txt	11	None
+PHENOTIPS_clinical.txt	12	None
+PHENOTIPS_clinical.txt	13	None
