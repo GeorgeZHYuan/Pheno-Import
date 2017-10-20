@@ -3,7 +3,7 @@
 import json
 import sys
 
-extractedData = open('import-data/Clinical-data/PHENOTIPS_clinical.txt', 'w')
+#extractedData = open('import-data/Clinical-data/PHENOTIPS_clinical.txt', 'w')
 templateFile = open('templates/phenotips_clinincal_labels.txt', 'r')
 #wjson = open('sample_data.txt','r').read()
 #wjdata = json.loads(wjson)
@@ -13,7 +13,7 @@ with templateFile as myfile:
 
 #print template[0]
 
-extractedData.close()
+#extractedData.close()
 extractedData = open('import-data/Clinical-data/PHENOTIPS_clinical.txt', 'a+')
 
 inFile = sys.argv[1]
@@ -29,7 +29,7 @@ def convertJSON(data):
 	#wjson = open(data,'r').read()	
 	wjdata = json.loads(data)
 
-	extractedData.write(template[0])
+	#extractedData.write(template[0])
 	#extractedData.write('\n')
 
 	dataCategories = [wjdata.get("report_id"), wjdata.get("external_id"), wjdata.get('patient_name',{}).get('first_name'), 
@@ -46,8 +46,10 @@ def convertJSON(data):
 			if (isinstance(label, list)):
 				max_array_size = max(max_array_size, len(label))
 				file.write(str(label[0])+'\t')
-			else:
+			elif (str(label) != "None"):
 				file.write(str(label)+'\t')
+			else:
+				file.write('\t')
 		file.write('\n')
 		for j in range(1, max_array_size):
 			file.write(str(dataCategories[0])+'\t')
@@ -59,7 +61,6 @@ def convertJSON(data):
 					#file.write(str(label2)+'\t')
 					file.write('\t')
 			file.write('\n')
-			
 convertJSON(inFile)
 
 #extractedData.close()

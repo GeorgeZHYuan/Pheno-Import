@@ -6,6 +6,13 @@ function setup_clinical_file {
 	local patients_ommited=()
 	local patient_dataset=()
 
+	#Deletes previously written data in clinical file
+	truncate -s 0 /home/transmart/Downloads/Pheno-Import/import-data/Clinical-data/PHENOTIPS_clinical.txt
+
+	# Add the labels for the column file in PHENOTIPS_clinicalvalue.txt
+	value='cat /home/transmart/Downloads/Pheno-Import/templates/phenotips_clinincal_labels.txt'
+	$value >> /home/transmart/Downloads/Pheno-Import/import-data/Clinical-data/PHENOTIPS_clinical.txt
+
 	# Finds and stores patient JSON data and create clinincal file
 	echo -e "${LCYAN}Retrieving${NC} patient data..."
 	for patient_id in "${patient_ids[@]}"; do
@@ -16,7 +23,7 @@ function setup_clinical_file {
 			echo -e "${LGREEN}Success${NC}" 		
 			python extract_data.py "$data" 
 			#echo $data
-			echo -e "${LGREEN}Success${NC}"
+			#echo -e "${LGREEN}Success${NC}"
 			patient_dataset+=($data)
 			patients_found+=($patient_id)
 		else											# add to ommited array if invalid data
