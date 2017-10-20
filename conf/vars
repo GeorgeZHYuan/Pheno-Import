@@ -1,9 +1,9 @@
-PH_IMPORT_HOME=/home/transmart/Downloads/Pheno-Import
+PH_IMPORT_HOME=/home/transmart/Pheno-Import
 
 USER=Admin
 PSWD=admin
 HOST=localhost
-PORT=6363
+PORT=10000
 
 LOGFILE=$PH_IMPORT_HOME/logs/main.log
 CURL_LOGFILE=$PH_IMPORT_HOME/logs/curl.log
