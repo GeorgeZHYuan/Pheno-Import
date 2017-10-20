@@ -3,8 +3,11 @@ import sys
 
 class SQL_Query:
 	def execute (self, statement, args={}):
+		database = 'transmart'
+		if 'database' in args:
+			database = args['database']
 		try :
-			return subprocess.check_output("psql -U $USER -d transmart -c \"" + statement + "\"", shell=True)
+			return subprocess.check_output("psql -U $USER -d "+database+" -c \"" + statement + "\"", shell=True)
 		except:
 			sys.exit("Cannot process statement: " + statement)
 	
@@ -56,27 +59,6 @@ class SQL_Query:
 				blanks = ""
 		self.__filter(table)
 		return table	
-
-
-	def extract_values_old (self, response):
-		response = response.replace(" ", "")
-		response = response.replace("\t","")		
-		table = []
-		line=[]
-		word = ""
-		for letter in response:
-			if letter == "\n":
-				line.append(word)
-				table.append(line)
-				word = ""
-				line = []
-			elif letter == "|":
-				line.append(word)
-				word = ""
-			else:
-				word+=letter
-		self.__filter(table)
-		return table
 
 
 	def query (self, statement, args={}):
