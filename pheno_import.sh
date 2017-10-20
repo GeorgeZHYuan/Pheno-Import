@@ -10,7 +10,7 @@ source conf/colors
 
 # Determine upload instructions
 import_method="new"
-patient_ids=('P0000001' 'P0000002' 'P0000003' 'P0000004')
+patient_ids=() #'P0000001' 'P0000002' 'P0000003' 'P0000004')
 
 # Get the patient data from phenotips
 setup_clinical_file "${patient_ids[@]}"
