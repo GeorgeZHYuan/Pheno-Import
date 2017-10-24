@@ -38,7 +38,7 @@ def convertJSON(data):
 		wjdata.get("date_of_death",{}).get("month"), wjdata.get("date_of_death",{}).get("day"), wjdata.get('ethnicity',{}).get('maternal_ethnicity'),
 		wjdata.get('ethnicity',{}).get('paternal_ethnicity')]
 
-	#additionalCategories = [wjdata.get("family_history",{}).get("consanguinity"), wjdata.get("family_history",{}).get("miscarriages"), wjdata.get("family_history",{}).get("affectedRelatives")]
+	additionalCategories = [wjdata.get("family_history",{}).get("consanguinity"), wjdata.get("family_history",{}).get("miscarriages"), wjdata.get("family_history",{}).get("affectedRelatives")]
 
 	print additionalCategories[0]
 

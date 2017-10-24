@@ -16,11 +16,11 @@ wjdata = json.loads('{"sex":"M","genes":[{"id":"ENSG00000053770","gene":"AP5M1",
 
 #def convertJSON(data):
 	
-dataCategories = [wjdata.get("report_id"), wjdata.get("external_id"), wjdata.get('patient_name',{}).get('first_name'), 
-		wjdata.get('patient_name',{}).get('last_name'), wjdata.get("sex"), wjdata.get("life_status"), wjdata.get("date_of_birth",{}).get("year"),
-		wjdata.get("date_of_birth",{}).get("month"), wjdata.get("date_of_birth",{}).get("day"), wjdata.get("date_of_death",{}).get("year"), 
-		wjdata.get("date_of_death",{}).get("month"), wjdata.get("date_of_death",{}).get("day"), wjdata.get('ethnicity').get('maternal_ethnicity'),
-		wjdata.get('ethnicity').get('paternal_ethnicity')]
+#dataCategories = [wjdata.get("report_id"), wjdata.get("external_id"), wjdata.get('patient_name',{}).get('first_name'), 
+#		wjdata.get('patient_name',{}).get('last_name'), wjdata.get("sex"), wjdata.get("life_status"), wjdata.get("date_of_birth",{}).get("year"),
+#		wjdata.get("date_of_birth",{}).get("month"), wjdata.get("date_of_birth",{}).get("day"), wjdata.get("date_of_death",{}).get("year"), 
+#		wjdata.get("date_of_death",{}).get("month"), wjdata.get("date_of_death",{}).get("day"), wjdata.get('ethnicity').get('maternal_ethnicity'),
+#		wjdata.get('ethnicity').get('paternal_ethnicity')]
 
 labels=[ ["report_id"], ["external_id"], ["patient_name", "first_name"], ["patient_name", "last_name"], ["sex"], ["life_status"], ["date_of_birth", "year"], ["date_of_birth", "month"], ["date_of_birth", "day"], ["date_of_death", "year"], ["date_of_death", "month"], ["date_of_death", "day"], ["ethnicity", "maternal_ethnicity"], ["ethnicity", "paternal_ethnicity"] ]
 
