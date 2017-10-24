@@ -1,0 +1,1 @@
+STUDY_ID	SUBJID	Patient_ID	Identifier	First_Name	Last_Name	Sex	Life_status	Birth_year	Birth_month	Birth_day	Death_year	Death_month	Death_date	Maternal_Ethnicity	Paternal_Ethnicity
