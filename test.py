@@ -31,7 +31,7 @@ def parseData(label,json):
 	iteration = 0
 	arraySize = len(label)
 	for current in range(0, arraySize):
-		innerArray = len(label[iteration])
+		innerArray = len(label[current])
 		if (innerArray == 1):
 			extractedInformation.append(json.get(label[current][0],{}))
 			iteration+=1
@@ -40,15 +40,14 @@ def parseData(label,json):
 			iteration+=1
 		#print extractedInformation[current]
 		if ( isinstance(extractedInformation[iteration-1], list)):
-			currentSize = len(extractedInformation)
 			temp = extractedInformation[iteration-1]
 			extractedInformation.remove(temp)
+			print temp
 			iteration-=1
-			#Fix this for loop, specifically whats on the inside
-			for element in (0, len(temp)):
-				extractedInformation.append(temp[element-1])
+			count=len(temp)
+			for element in range(0, count):
+				extractedInformation.append(temp[element])
 				iteration+=1
-			#print temp
 
 parseData(labels,wjdata)
 
