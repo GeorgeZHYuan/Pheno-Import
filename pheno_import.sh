@@ -2,7 +2,7 @@
 
 # Initialize
 PH_HOME=$HOME/Pheno-Import
-TM_LOADER_HOME=$HOME/tMDataLoader
+TM_LOADER_HOME=$PH_HOME/tMDataLoader
 
 # Determine upload instructions
 patient_ids=('P0000001' 'P0000002' 'P0000003' 'P0000004')
