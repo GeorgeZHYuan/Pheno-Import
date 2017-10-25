@@ -1,5 +1,5 @@
 import sys
-from Structs import *
+from Data_Types import *
 
 # Pheno-Import Paths
 PH_HOME='/home/transmart/Pheno-Import'

@@ -1,4 +1,4 @@
-from Structs import Transmart_Study
+from Data_Types import Transmart_Study
 
 class Data_File:
 	def __init__(self, tm, hm_dir):		
