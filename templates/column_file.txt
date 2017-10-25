@@ -1,0 +1,38 @@
+#MERGE_MODE: UPDATE
+FILENAME	CATEGORY_CD	COL_NBR	DATA_LABEL
+clinical.txt		1	STUDY_ID
+clinical.txt		2	SUBJ_ID
+clinical.txt	Phenotips_data+Patient_Information+Identification	3	Patient_ID
+clinical.txt	Phenotips_data+Patient_Information+Identification	4	Identifer
+clinical.txt	Phenotips_data+Patient_Information+Patient_name	5	First_Name
+clinical.txt	Phenotips_data+Patient_Information+Patient_name	6	Last_Name
+clinical.txt	Phenotips_data+Patient_Information	7	Sex
+clinical.txt	Phenotips_data+Patient_Information	8	Life_status
+clinical.txt	Phenotips_data+Patient_Information+Birthdate	9	Birth_year
+clinical.txt	Phenotips_data+Patient_Information+Birthdate	10	Birth_month
+clinical.txt	Phenotips_data+Patient_Information+Birthdate	11	Birth_day
+clinical.txt	Phenotips_data+Patient_Information+Deathdate	12	Death_year
+clinical.txt	Phenotips_data+Patient_Information+Deathdate	13	Death_month
+clinical.txt	Phenotips_data+Patient_Information+Deathdate	14	Death_day
+clinical.txt	Phenotips_data+Family_History_and_Pedigree+Ethnicity	15	Maternal_Ethnicity
+clinical.txt	Phenotips_data+Family_History_and_Pedigree+Ethnicity	16	Paternal_Ethnicity
+clinical.txt	Phenotips_data+Family_History_and_Pedigree+Family_History	17	Other_affected_relatives
+clinical.txt	Phenotips_data+Family_History_and_Pedigree+Family_History	18	Consanguinity
+clinical.txt	Phenotips_data+Family_History_and_Pedigree+Family_History	19	Parents_with_at_least_3_miscarriages
+clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+Gestation	20	Multiple_gestation
+clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+Gestation	21	Twin_number
+clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+Gestation	22	Gestation_at_delivery_(weeks)
+clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+Assisted_Reproduction	23	Conception_after_fertility_medication
+clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+Assisted_Reproduction	24	Intrauterine_insemination_(IUI)
+clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+Assisted_Reproduction	25	In_vitro_fertilization
+clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+Assisted_Reproduction	26	Intra-cytoplasmic_sperm_injection
+clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+Assisted_Reproduction	27	Gestational_surrogacy
+clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+Assisted_Reproduction	28	Donor_egg
+clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+Assisted_Reproduction	29	Donor_sperm
+clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History	30	Maternal_age_at_EDD_(years)
+clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History	31	Paternal_age_at_EDD_(years)
+clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+APGAR_score	32	APGAR_score_(1_minute)
+clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+APGAR_score	33	APGAR_score_(5_minute)
+clinical.txt	Phenotips_data+Medical_History	34	Allergies
+		
+
