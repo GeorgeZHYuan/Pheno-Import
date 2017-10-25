@@ -1,0 +1,5 @@
+STUDY_ID	SUBJID	Patient_ID	Identifier	First_Name	Last_Name	Sex	Life_status	Birth_year	Birth_month	Birth_day	Death_year	Death_month	Death_date	Maternal_Ethnicity	Paternal_Ethnicity
+PHENOTEST	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6	None	None	None	Arabs	AfricanAmericans	Korean	
+PHENOTEST	P0000001												Luba			
+PHENOTEST	P0000001												Japanese			
+PHENOTEST	P0000002	Import Patient	Imported	Patients	M	deceased	1990	1	1	2017	1	1	Russians	African-America	

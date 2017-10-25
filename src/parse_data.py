@@ -18,5 +18,4 @@ def parse_data(json, column_labels):
 			for element in range(0, count):
 				extractedInformation.append(temp[element])
 				iteration+=1
-	print extractedInformation
 	return extractedInformation

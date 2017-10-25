@@ -1,5 +1,5 @@
 class Pheno_Settings:
-	self
+	pass
 
 class Transmart_Study:
 	pass

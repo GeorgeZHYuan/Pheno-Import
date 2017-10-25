@@ -1,9 +1,0 @@
-SUBJID	Patient_ID	Identifier	First_Name	Last_Name	Sex	Life_status	Birth_year	Birth_month	Birth_day	Death_year	Death_month	Death_date	Maternal_Ethnicity	Paternal_Ethnicity
-P0000001	P0000001	Patient0	Jandro	Alleh	M	alive	1988	7	6				African Americans	Arabs	
-P0000001													Korean	Luba	
-P0000001													Japanese	
-P0000002	P0000002		Yes	Marco	F	alive	1989	11	9				Venesuala	Flemish	
-P0000002													Korean	Gujaratis	
-P0000003	P0000003	gkl	Afsdcz	Gxcvxcv	F	deceased	1952	8	4	1971	6	6	Gros Ventre	African Americans	
-P0000003													Ni-Vanuatu	
-P0000004	P0000004	Masd	Pasda	Masda	M	deceased	1970			2012	5	6	Han Chinese	Han Chinese	

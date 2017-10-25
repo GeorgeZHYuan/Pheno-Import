@@ -14,7 +14,7 @@ class Data_File:
 		self.labels = open(self.label_location).readline()
 
 
-	def set_location(self, hm_dir, top_node, study_id):
+	def set_location(self, hm_dir, top_node, study_name):
 		self.data_location = hm_dir+'/import-data'+'/'+top_node+'/'+study_name+'/ClinicalData/PHENOTIPS_clinical.txt'
 
 
