@@ -8,7 +8,7 @@ TM_LOADER_HOME='/home/tMDataLoader'
 # Transmart Variables
 TM = Transmart_Study()
 TM.TOP_NODE = "Public Studies"
-TM.STUDY_NAME = "Phentips"
+TM.STUDY_NAME = "Phenotps"
 TM.STUDY_ID = "PHENOTIPS"
 TM.NEW = False
 
