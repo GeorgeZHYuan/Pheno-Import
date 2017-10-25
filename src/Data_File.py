@@ -14,11 +14,8 @@ class Data_File:
 		self.labels = open(self.label_location).readline()
 
 
-	def set_location(self, top_node, study_id, additional=[]):
-		self.data_location = '/home/transmart/Pheno-Import/import-data'+'/'+top_node+'/'+study_id+'/ClinicalData'
-		for folder in additional:
-			self.data_location += '/'+folder
-		self.data_location += '/PHENOTIPS_clinical.txt'
+	def set_location(self, hm_dir, top_node, study_id):
+		self.data_location = hm_dir+'/import-data'+'/'+top_node+'/'+study_name+'/ClinicalData/PHENOTIPS_clinical.txt'
 
 
 	def add_patient(self, patient_data):

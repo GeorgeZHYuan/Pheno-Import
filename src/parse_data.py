@@ -1,7 +1,5 @@
-from global_vars import STUDY_ID, column_labels
-
-def parse_data(json):
-	extractedInformation = [STUDY_ID]
+def parse_data(json, column_labels):
+	extractedInformation = []
 	iteration = 0
 	arraySize = len(column_labels)
 	for current in range(0, arraySize):
@@ -20,4 +18,5 @@ def parse_data(json):
 			for element in range(0, count):
 				extractedInformation.append(temp[element])
 				iteration+=1
+	print extractedInformation
 	return extractedInformation

@@ -8,5 +8,4 @@ db.jdbcConnectionString = "jdbc:postgresql://${db.hostname}:${db.port}/transmart
 db.jdbcDriver = 'org.postgresql.Driver'
 db.sql.storedProcedureSyntax = 'PostgreSQL'
 
-dataDir = "$PHENO_IMPORT_HOME/YOUR_ETL_DIRECTORY"
-isNoRenameOnFail = true
+dataDir = "/home/transmart/Pheno-Import/import-data"
