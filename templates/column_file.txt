@@ -1,5 +1,6 @@
+#MERGE_MODE: UPDATE_VARIABLES
 FILENAME	CATEGORY_CD	COL_NBR	DATA_LABEL	ALT_DATA_LABEL	CTRL_VOCAB_CODE
-clinical.txt		1 STUDY_ID
+clinical.txt		1	STUDY_ID
 clinical.txt		2	SUBJ_ID
 clinical.txt	Phenotips_data+Patient_information+Identification	3	Patient_ID		
 clinical.txt	Phenotips_data+Patient_information+Identification	4	Identifer		
@@ -12,4 +13,6 @@ clinical.txt	Phenotips_data+Patient_information+Birthdate	10	Birth_month
 clinical.txt	Phenotips_data+Patient_information+Birthdate	11	Birth_day
 clinical.txt	Phenotips_data+Patient_information+Deathdate	12	Death_year
 clinical.txt	Phenotips_data+Patient_information+Deathdate	13	Death_month
-clinical.txt	Phenotips_data+Patient_information+Deathdate	14	Death_date
+clinical.txt	Phenotips_data+Patient_information+Deathdate	14	Death_day
+clinical.txt	Phenotips_data+Patient_information+Ethnicity	15	Maternal_Ethnicity
+clinical.txt	Phenotips_data+Patient_information+Ethnicity	16	Paternal_Ethnicity

@@ -10,6 +10,7 @@ TM = Transmart_Study()
 TM.TOP_NODE = "Public Studies"
 TM.STUDY_NAME = "Phenotips"
 TM.STUDY_ID = "PHENOTEST"
+TM.NEW = False
 
 # Phenotips Variables
 PH = Pheno_Settings()

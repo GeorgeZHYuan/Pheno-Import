@@ -33,6 +33,7 @@ class Data_File:
 				if temp == {}:
 					temp = ''
 				extractedInformation.append(temp)
+		extractedInformation = extractedInformation[:2] + extractedInformation[1:]
 		self.patient_info_list.append(extractedInformation)
 		
 
