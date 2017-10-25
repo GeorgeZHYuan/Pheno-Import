@@ -1,12 +1,22 @@
+import os
+import shutil
+from shutil import copyfile
 from Data_Types import Transmart_Study
 
 class Data_File:
 	def __init__(self, tm, hm_dir):		
 		self.study_id = tm.STUDY_ID
-		self.data_file_location = hm_dir+'/import-data'+'/'+tm.TOP_NODE+'/'+tm.STUDY_NAME+'/ClinicalData/PHENOTIPS_clinical.txt'
+		self.path = hm_dir+'/import-data'+'/'+tm.TOP_NODE+'/'+tm.STUDY_NAME+'/ClinicalData'
 		self.patient_info_list = []
-		self.data_labels = open(hm_dir+'/templates/data_labels.txt').readline()
-	
+		self.setup_directories(hm_dir, tm)
+
+
+	def setup_directories(self, hm_dir, tm):
+		shutil.rmtree(hm_dir+'/import-data', ignore_errors=True)
+		os.makedirs(self.path)
+		copyfile(hm_dir+'/templates/column_file.txt', self.path+'/'+tm.STUDY_NAME+'_'+tm.STUDY_ID+'_Mapping_File.txt')
+		copyfile(hm_dir+'/templates/data_labels.txt', self.path+'/'+'clinical.txt')
+
 
 	def add_patient(self, json, column_labels):
 		extractedInformation = [self.study_id]
@@ -24,14 +34,10 @@ class Data_File:
 					temp = ''
 				extractedInformation.append(temp)
 		self.patient_info_list.append(extractedInformation)
-
-
-	def generate_file(self):
-		file = open(self.data_file_location, 'w+')
-		file.write(self.data_labels)
-		file.close
 		
-		with open(self.data_file_location, 'a+') as file:
+
+	def generate_file(self):		
+		with open(self.path+'/clinical.txt', 'a+') as file:
 			for patient_info in self.patient_info_list:
 				max_array_size = 1
 				for item in patient_info:
@@ -50,5 +56,6 @@ class Data_File:
 						else:
 							file.write('\t')
 					file.write('\n')
+		file.close()
 
 		
