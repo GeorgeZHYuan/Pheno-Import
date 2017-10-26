@@ -14,7 +14,6 @@ for patient_id in patient_ids:
 	if isinstance(response, int):
 		patients_ommited.append(patient_id)
 	else:
-		print response["allergies"]
 		data_file.add_patient(response, JSON_LABELS)
 		patients_found.append(patient_id)
 
