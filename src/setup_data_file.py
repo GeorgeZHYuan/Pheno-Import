@@ -1,7 +1,9 @@
 import sys
 from Data_File import Data_File
-from global_vars import TM, JSON_LABELS, PH_HOME
+from global_vars import TM, PH_HOME
 from phenotips_REST import phenotips_REST
+sys.path.insert(0, PH_HOME+'/templates')
+from JSON_labels import JSON_LABELS
 
 patient_ids = sys.argv[1:]
 patients_found = []
