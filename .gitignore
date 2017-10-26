@@ -1,6 +1,4 @@
 *~
-*.log
-*.tmp
 *.pyc
 import-data/
 conf/
