@@ -34,5 +34,8 @@ clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History	31	Paternal_age_at_ED
 clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+APGAR_score	32	APGAR_score_(1_minute)
 clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+APGAR_score	33	APGAR_score_(5_minute)
 clinical.txt	Phenotips_data+Medical_History	34	Allergies
+clinical.txt	Phenotips_data+Clinical_Symptoms_and_Physical_Findings	35	Clinical_status
+clinical.txt	Phenotips_data+Case_Resolution	36	Case_Status
+clinical.txt	Phenotips_data+Case_Resolution	37	Pubmed_ID
 		
 
