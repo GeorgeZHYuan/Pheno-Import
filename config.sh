@@ -1,35 +1,47 @@
-# Pheno-Import Variables
-PH_HOME=$PWD
-PSQL_HOST='localhost'
-PSQL_PORT='5432'
+source conf/setup.config
+PH_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# write to vars file
-echo "PH_HOME=$PH_HOME
-PSQL_HOST=$PSQL_HOST
-PSQL_PORT=$PSQL_PORT" > $PH_HOME/conf/vars
+# Local installation of tMDataLoader
+if [[ $TM_DATALOADER_PATH == 'install local version' ]]; then
+	TM_DATALOADER_PATH=$PH_HOME/import-data
+	# Configure tMDataLoader Settings
+	git clone https://github.com/Clarivate-LSPS/tMDataLoader.git
+	cd tMDataLoader
+	rm Config.groovy
+	./gradlew deployJar
 
-# download tMDataLoader
-cd $PH_HOME
-git clone https://github.com/Clarivate-LSPS/tMDataLoader.git
-cd tMDataLoader
-rm Config.groovy
-./gradlew deployJar
+	# setup tMDataLoader psql user
+	createuser $TRANSMART_DB_USR -s
+	sudo -u $USER psql -c "ALTER USER $TRANSMART_DB_USR WITH PASSWORD '$TRANSMART_DB_PWD';"
+	if [ ! -f ~/.pgpass ]; then
+		touch ~/.pgpass
+		chmod 0600 ~/.pgpass
+	fi;
+	ADDRESS=$TRANSMART_DB_HOST:$TRANSMART_DB_PORT
+	echo "$ADDRESS:transmart:$TRANSMART_DB_USR:$TRANSMART_DB_PWD" > ~/.pgpass
 
-# setup tMDataLoader psql user
-acc='pheno_import'
-pwd=$acc
-tmUser=$(createuser $acc -s 2>&1)
-sudo -u $USER psql -c "ALTER USER $acc WITH PASSWORD '$pwd';"
-if [ ! -f ~/.pgpass ]; then
-	touch ~/.pgpass
-	chmod 0600 ~/.pgpass
+	# setup sql scripts for tMDataLoader
+	cd sql/postgres
+	psql -d transmart -U $USER -f migrations.sql -h $TRANSMART_DB_HOST
+	psql -d transmart -U $USER -f permissions.sql -h $TRANSMART_DB_HOST
+	psql -d transmart -U $TRANSMART_DB_USR -f procedures.sql -h $TRANSMART_DB_HOST
 fi;
-echo "$PSQL_HOST:$PSQL_PORT:transmart:$acc:$pwd" > ~/.pgpass
 
-# Setup sql scripts for tMDataLoader
-cd sql/postgres
-psql -d transmart -U $USER -f migrations.sql -h $PSQL_HOST
-psql -d transmart -U $USER -f permissions.sql -h $PSQL_HOST
-psql -d transmart -U $acc -f procedures.sql -h $PSQL_HOST
+# Setup tMDataLoader config file
+TM_CONFIG_FILE_PATH=$PH_HOME/conf/Config.groovy
+echo "dataDir = '$TM_DATALOADER_PATH'
+db.hostname = '$TRANSMART_DB_HOST'
+db.port = '$TRANSMART_DB_PORT'
+db.username = '$TRANSMART_DB_USR'
+db.password = '$TRANSMART_DB_PWD'
+db.jdbcConnectionString = 'jdbc:postgresql://$ADDRESS/transmart'
+db.jdbcDriver = 'org.postgresql.Driver'
+db.sql.storedProcedureSyntax = 'PostgreSQL'
+db.sid = 'xe'" > $TM_CONFIG_FILE_PATH
+
+# Setup Pheno-Import settings
+echo "PH_HOME=$PH_HOME 
+TM_DATALOADER_PATH=$TM_DATALOADER_PATH
+TM_CONFIG_FILE_PATH=$TM_CONFIG_FILE_PATH" > $PH_HOME/conf/Pheno_Settings.config
 
 

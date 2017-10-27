@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Initialize variables
-source conf/vars
-src/initialize.sh
+source conf/Pheno_Settings.config
+src/initialize.sh $PH_HOME "$@"
 
 # Determine patients to upload
 patient_ids=('P0000001' 'P0000002' 'P0000003' 'P0000004')
