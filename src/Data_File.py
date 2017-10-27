@@ -1,7 +1,6 @@
 import os
 import shutil
 from shutil import copyfile
-from Data_Types import Transmart_Study
 
 class Data_File:
 	def __init__(self, tm, hm_dir):		

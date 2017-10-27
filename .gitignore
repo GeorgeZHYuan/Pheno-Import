@@ -1,5 +1,7 @@
 *~
-*.log
-*.tmp
 *.pyc
+tMDataLoader/
 import-data/
+src/upload_vars.py
+conf/Pheno_Settings.config
+conf/Config.groovy
