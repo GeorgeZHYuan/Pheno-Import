@@ -1,5 +1,7 @@
 *~
 *.pyc
-import-data/
-conf/
 tMDataLoader/
+import-data/
+src/upload_vars.py
+conf/Pheno_Settings.config
+conf/Config.groovy
