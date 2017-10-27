@@ -3,7 +3,7 @@ PH_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Local installation of tMDataLoader
 if [[ $TM_DATALOADER_PATH == 'install local version' ]]; then
-	TM_DATALOADER_PATH=$PH_HOME/import-data
+	TM_DATALOADER_PATH=$PH_HOME/tMDataLoader
 	# Configure tMDataLoader Settings
 	git clone https://github.com/Clarivate-LSPS/tMDataLoader.git
 	cd tMDataLoader
@@ -29,7 +29,7 @@ fi;
 
 # Setup tMDataLoader config file
 TM_CONFIG_FILE_PATH=$PH_HOME/conf/Config.groovy
-echo "dataDir = '$TM_DATALOADER_PATH'
+echo "dataDir = '$PH_HOME/import-data'
 db.hostname = '$TRANSMART_DB_HOST'
 db.port = '$TRANSMART_DB_PORT'
 db.username = '$TRANSMART_DB_USR'
