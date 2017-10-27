@@ -1,9 +1,8 @@
 import requests
-from global_vars import PH
 
-def phenotips_REST(args):
-	base_url = 'http://'+PH.ADDRESS+'/rest/'
-	r = requests.get(base_url + args, auth=(PH.USER, PH.PWD))
+def phenotips_REST(phenotips, args):
+	base_url = 'http://'+phenotips.ADDRESS+'/rest/'
+	r = requests.get(base_url + args, auth=(phenotips.USER, phenotips.PWD))
 	if r.status_code != 200:
 		return r.status_code
 	else:
