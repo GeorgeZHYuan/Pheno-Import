@@ -4,7 +4,7 @@ from Data_File import Data_File
 from phenotips_REST import phenotips_REST
 
 sys.path.insert(0, PH_HOME+'/templates')
-from JSON_labels import JSON_LABELS
+from JSON_labels import LABEL_FORMATS
 
 patient_ids = sys.argv[1:]
 patients_found = []
@@ -17,7 +17,7 @@ for patient_id in patient_ids:
 	if isinstance(response, int):
 		patients_ommited.append(patient_id)
 	else:
-		data_file.add_patient(response, JSON_LABELS)
+		data_file.add_patient(response, LABEL_FORMATS)
 		patients_found.append(patient_id)
 
 data_file.generate_file()
