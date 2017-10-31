@@ -25,7 +25,7 @@ class Direct_Value_Parser(Pheno_Parser):
 				if temp == {}:
 					temp = ''
 				data.append(temp)
-		return data[:2] + data[1:]
+		return data
 
 
 class Structured_Value_Parser(Pheno_Parser):	
@@ -33,7 +33,6 @@ class Structured_Value_Parser(Pheno_Parser):
 		data = []		
 		for labelset in self.label_formats:
 			for label in labelset[0]:
-				print "\n" + label
 				body = json.get(label,{})
 				data += self.break_down_json(body, labelset[1])
 		return data
@@ -48,8 +47,8 @@ class Structured_Value_Parser(Pheno_Parser):
 					temp.append(value)
 				else:
 					temp += self.break_down_json(value, label[key])
-			print key + ": " + str(temp)
-			if temp == []:
+			if temp == [] or temp == 'None':
 				temp = ''
 			data.append(temp)
 		return data
+

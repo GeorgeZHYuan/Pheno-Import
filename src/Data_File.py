@@ -18,14 +18,13 @@ class Data_File:
 		copyfile(hm_dir+'/templates/data_labels.txt', self.path+'/'+'clinical.txt')
 
 
-
 	def add_patient(self, json, json_label_formats):
 		extractedInformation = [self.study_id]
 		parsers = [Direct_Value_Parser(), Structured_Value_Parser()]
 		for i, parser in enumerate(parsers):
 			parser.set_format(json_label_formats[i])
 			extractedInformation += parser.get_data(json)
-		self.patient_info_list.append(extractedInformation)
+		self.patient_info_list.append(extractedInformation[:2] + extractedInformation[1:])
 		
 
 	def generate_file(self):		
@@ -44,9 +43,8 @@ class Data_File:
 					for item2 in patient_info[2:]:
 						if (isinstance(item2, list)):
 							if len(item2) > j:
-								file.write(str(item2[j])+'\t')
-						else:
-							file.write('\t')
+								file.write(str(item2[j]))
+						file.write('\t')
 					file.write('\n')
 		file.close()
 
