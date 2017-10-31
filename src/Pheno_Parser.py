@@ -22,7 +22,7 @@ class Direct_Value_Parser(Pheno_Parser):
 				temp = json.get(label[0],{})
 				for i in range(1, len(label)):
 					temp = temp.get(label[i],{})
-				if temp == {}:
+				if temp == {} or temp == []:
 					temp = ''
 				data.append(temp)
 		return data
