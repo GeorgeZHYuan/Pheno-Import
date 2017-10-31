@@ -14,11 +14,13 @@ clinical.txt	Phenotips_data+Patient_Information+Birthdate	11	Birth_day
 clinical.txt	Phenotips_data+Patient_Information+Deathdate	12	Death_year
 clinical.txt	Phenotips_data+Patient_Information+Deathdate	13	Death_month
 clinical.txt	Phenotips_data+Patient_Information+Deathdate	14	Death_day
+
 clinical.txt	Phenotips_data+Family_History_and_Pedigree+Ethnicity	15	Maternal_Ethnicity
 clinical.txt	Phenotips_data+Family_History_and_Pedigree+Ethnicity	16	Paternal_Ethnicity
 clinical.txt	Phenotips_data+Family_History_and_Pedigree+Family_History	17	Other_affected_relatives
 clinical.txt	Phenotips_data+Family_History_and_Pedigree+Family_History	18	Consanguinity
 clinical.txt	Phenotips_data+Family_History_and_Pedigree+Family_History	19	Parents_with_at_least_3_miscarriages
+
 clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+Gestation	20	Multiple_gestation
 clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+Gestation	21	Twin_number
 clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+Gestation	22	Gestation_at_delivery_(weeks)
@@ -33,9 +35,22 @@ clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History	30	Maternal_age_at_ED
 clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History	31	Paternal_age_at_EDD_(years)
 clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+APGAR_score	32	APGAR_score_(1_minute)
 clinical.txt	Phenotips_data+Prenatal_and_Perinatal_History+APGAR_score	33	APGAR_score_(5_minute)
+
 clinical.txt	Phenotips_data+Medical_History	34	Allergies
+
 clinical.txt	Phenotips_data+Clinical_Symptoms_and_Physical_Findings	35	Clinical_status
+
 clinical.txt	Phenotips_data+Case_Resolution	36	Case_Status
 clinical.txt	Phenotips_data+Case_Resolution	37	Pubmed_ID
-		
+
+clinical.txt	Phenotips_data+Family_History_and_Pedigree+Gloabl_Mode_of_Inheritance	38	id
+clinical.txt	Phenotips_data+Family_History_and_Pedigree+Gloabl_Mode_of_Inheritance	39	label
+clinical.txt	Phenotips_data+Medical_History+Global_Age_of_Onset	40	id
+clinical.txt	Phenotips_data+Medical_History+Global_Age_of_Onset	41	label
+clinical.txt	Phenotips_data+Diagnosis+Clinical_diagnosis	42	id
+clinical.txt	Phenotips_data+Diagnosis+Clinical_diagnosis	43	label
+clinical.txt	Phenotips_data+Diagnosis+Final_diagnosis	44	id
+clinical.txt	Phenotips_data+Diagnosis+Final_diagnosis	45	label
+
+
 
