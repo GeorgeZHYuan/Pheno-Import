@@ -1,4 +1,4 @@
-JSON_LABELS=[
+DIRECT_LABELS=[
 ["report_id"], ["external_id"], 
 ["patient_name", "first_name"], ["patient_name", "last_name"], 
 ["sex"], ["life_status"], 
@@ -10,9 +10,17 @@ JSON_LABELS=[
 ["prenatal_perinatal_history", "multipleGestation"], ["prenatal_perinatal_history", "twinNumber"], ["prenatal_perinatal_history", "gestation"], 
 ["prenatal_perinatal_history", "assistedReproduction_fertilityMeds"], ["prenatal_perinatal_history", "IUI"], ["prenatal_perinatal_history", "ivf"], ["prenatal_perinatal_history", "icsi"], ["prenatal_perinatal_history", "assistedReproduction_surrogacy"], ["prenatal_perinatal_history", "assistedReproduction_donoregg"], ["prenatal_perinatal_history", "assistedReproduction_donorsperm"], ["prenatal_perinatal_history", "maternal_age"], ["prenatal_perinatal_history", "paternal_age"], ["apgar", "apgar1"], ["apgar", "apgra5"], 
 
+
 ["allergies"],
 
 ["clinicalStatus"],
 
 ["solved", "status"], ["solved", "pubmed_id"]
 ]
+
+STRUCTURED_LABELS=[
+[['global_mode_of_inheritance', 'global_age_of_onset', 'clinical-diagnosis', 'disorders'], {'id':'str', 'label':'str'}]
+]
+
+
+LABEL_FORMATS = [DIRECT_LABELS, STRUCTURED_LABELS]
