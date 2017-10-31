@@ -1,6 +1,5 @@
 # Analysis Job Variable
-PH_HOME=$1
-variables=("${@:2}")
+source $HOME/.Pheno_Settings.config
 TM_TOP_NODE='Public Studies'
 TM_STUDY_NAME='Phenotips'
 TM_STUDY_ID='PHENOTEST'
@@ -8,6 +7,18 @@ PHENO_HOST='localhost'
 PHENO_PORT='10000'
 PHENO_USER='Admin'
 PHENO_PWD='admin'
+	
+vars=("$@")
+if [[ ${vars[1]} != 'usedefault' ]]; then
+
+	TM_TOP_NODE=${vars[1]}
+	TM_STUDY_NAME=${vars[2]}
+	TM_STUDY_ID=${vars[3]}
+	PHENO_HOST=${vars[4]}
+	PHENO_PORT=${vars[5]}
+	PHENO_USER=${vars[6]}
+	PHENO_PWD=${vars[7]}
+fi;
 
 # Convert to python variables
 echo "# Setup python global vars

@@ -42,6 +42,4 @@ db.sid = 'xe'" > $TM_CONFIG_FILE_PATH
 # Setup Pheno-Import settings
 echo "PH_HOME=$PH_HOME 
 TM_DATALOADER_PATH=$TM_DATALOADER_PATH
-TM_CONFIG_FILE_PATH=$TM_CONFIG_FILE_PATH" > $PH_HOME/conf/Pheno_Settings.config
-
-
+TM_CONFIG_FILE_PATH=$TM_CONFIG_FILE_PATH" > $HOME/.Pheno_Settings.config

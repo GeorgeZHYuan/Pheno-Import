@@ -19,6 +19,5 @@ for patient_id in patient_ids:
 	else:
 		data_file.add_patient(response, LABEL_FORMATS)
 		patients_found.append(patient_id)
-print len(data_file.patient_info_list[0][44])
-print data_file.patient_info_list
+
 data_file.generate_file()
