@@ -20,7 +20,7 @@ class Data_File:
 
 	def add_patient(self, json, json_label_formats):
 		extractedInformation = [self.study_id]
-		parsers = [Direct_Value_Parser(), Structured_Value_Parser()]
+		parsers = [Direct_Value_Parser(), Structured_Value_Parser(), Split_Value_Parser()]
 		for i, parser in enumerate(parsers):
 			parser.set_format(json_label_formats[i])
 			extractedInformation += parser.get_data(json)
@@ -47,5 +47,6 @@ class Data_File:
 						file.write('\t')
 					file.write('\n')
 		file.close()
+		copyfile(self.path+'/clinical.txt', self.path+'/'+'clinical.csv')
 
 		
