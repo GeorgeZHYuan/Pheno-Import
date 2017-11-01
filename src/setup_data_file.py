@@ -13,7 +13,7 @@ patients_ommited = []
 data_file = Data_File(TM, PH_HOME)
 
 for patient_id in patient_ids:
-	print "patient:" + patient_id
+	print "getting patient:" + patient_id
 	response = phenotips_REST(PH, 'patients/'+patient_id)
 	if isinstance(response, int):
 		patients_ommited.append(patient_id)

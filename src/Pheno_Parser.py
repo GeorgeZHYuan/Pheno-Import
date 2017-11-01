@@ -60,7 +60,8 @@ class Structured_Value_Parser(Pheno_Parser):
 
 class Split_Value_Parser(Pheno_Parser):
 	def get_data(self, json):
-		data = []		
+		data = []
+		types = {}	
 		for labelset in self.label_formats:
 			body = json.get(labelset[0],{})
 			filtered_body = []
@@ -68,31 +69,40 @@ class Split_Value_Parser(Pheno_Parser):
 				if entry.get('type', {}) == (labelset[1])['type']:
 					filtered_body.append(entry)
 			data += self.break_down_json(filtered_body, labelset[2])
-		reformated_data = []
-		for keytype in data:
-			if isinstance(keytype, str):
-				reformated_data.append(keytype)
-			elif not isinstance(keytype[0], list):
-				reformated_data.append(keytype)
-			else:
-				for item in keytype:
-					reformated_data.append(item)
-		return reformated_data
+		for i, element in enumerate(data):
+			if element == []:
+				data[i] = ''	
+		return data
 
 	def break_down_json(self, json, label):
 		data = []
+		types = {}
+		counter = 0
 		for key in label:
-			temp = []
+			value = label[key]
+			if not isinstance(value, dict):
+				data.append([])
+				types[key] = counter
+				counter += 1
+			else:
+				for key2 in value:
+					data.append([])
+					types[key+':'+key2] = counter
+					counter += 1
+		for key in label:
 			for entry in json:
 				value = entry.get(key, {})
-				if isinstance(value, unicode):
-					temp.append(value)
+				if not isinstance(value, list) and not isinstance(value, dict):
+					data[types[key]].append(value)	
 				else:
-					temp += self.break_down_json(value, label[key])
-			if temp == []:
-				temp = ''
-			data.append(temp)
+					for entry2 in value:
+						for key2 in label[key]:
+							data[types[key+":"+key2]].append(entry2[key2])
 		return data
+
+
+
+				
 					
 
 
