@@ -1,18 +1,18 @@
 # Pheno-Import
-Load phenotips data to transmart
-Fetches data from phenotips using REST API,
-Creates Upload files through parsing HTTP responses from phenotips
-Uploads data to transmart using tMDataLoader: `https://github.com/Clarivate-LSPS/tMDataLoader`
+* Load phenotips data to transmart
+* Fetches data from phenotips using REST API,
+* Creates Upload files through parsing HTTP responses from phenotips
+* Uploads data to transmart using tMDataLoader: `https://github.com/Clarivate-LSPS/tMDataLoader`
 
 # Setup
 1. Make sure all the variables are setup correctly in `conf/setup.config` 
-2. run `./configure.sh`
+2. Run `./configure.sh`
 
 # Running
 **From terminal**
-1. open `pheno-import.sh`
+1. Open `pheno-import.sh`
 2. Mannually fill in the variables such `upload_vars` and `patient_ids`. 
-2. execute pheno-import in terminal
+2. Execute pheno-import in terminal
 
 **From Analysis Jobs**
 1. Not yet availble...
