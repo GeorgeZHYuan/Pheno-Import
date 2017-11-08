@@ -14,7 +14,7 @@ Compatible with linux OS and [PostgreSQL](https://www.postgresql.org/) tranSMART
 **From terminal**
 1. Open `pheno-import.sh`.
 2. Fill in the correct variables for `upload_vars` and `patient_ids`.
-3. Run `pheno-import`.
+3. Run `pheno-import.sh`.
 
 **From Analysis Jobs**
 1. Not yet availble...
