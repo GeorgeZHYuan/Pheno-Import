@@ -2,13 +2,16 @@
 
 # Initialize variables
 source $HOME/.Pheno_Settings.config
-#upload_vars=("{$@:1:7}")
-upload_vars=('usedefault' 'usedefault' 'usedefault' 'usedefault' 'usedefault' 'usedefault' 'usedefault')
-$PH_HOME/src/initialize.sh "${upload_vars[@]}"
+
+# TOP NODE \ Study Name \ Study ID \ Phenotips Address \ Phenotips Username \ Phenotips Password
+#upload_vars=("{$@:1:6}") 
+upload_vars=('Public Studies' 'Phenotips' 'PHENOTEST' 'localhost:10000' 'Admin' 'admin')
+
+$PH_HOME/initialize.sh "${upload_vars[@]}"
 
 # Determine patients to upload
-#patient_ids=("${@:8}")
-patient_ids=('P0000001' 'P0000002' 'P0000003' 'P0000004')
+#patient_ids=("${@:7}")
+patient_ids=('P0000001' 'P0000002' 'P0000003' 'P0000004' 'P0000005' 'P0000006')
 
 # Get the patient data from phenotips
 python $PH_HOME/src/setup_data_file.py "${patient_ids[@]}"
