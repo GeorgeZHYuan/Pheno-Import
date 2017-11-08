@@ -18,7 +18,7 @@
 1. Not yet availble...
  
 # General Debugging Tips
-1. Confirm tMDataLoader variables in `conf/setup.config` are correct
-2. Check if the upload variables are correct in `src/upload_vars.py`
-3. Dive into `import-data` directory and check the upload data, then directly use tMDataLoader to upload the data using the fixed files.
+*  Confirm tMDataLoader variables in `conf/setup.config` are correct
+*  Check if the upload variables are correct in `src/upload_vars.py`
+*  Dive into `import-data` directory and check the upload data, then directly use tMDataLoader to upload the data using the fixed files.
    Note: Any errors here were probably from the JSON parsing scripts within Pheno-Import. 
