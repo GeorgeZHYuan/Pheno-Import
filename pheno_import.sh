@@ -2,7 +2,7 @@
 
 source $HOME/.Pheno_Settings.config
 
-## Variables from bash
+## Variables from arguments
 #upload_vars=("{$@:1:6}")
 #patient_ids=("${@:7}")
 
