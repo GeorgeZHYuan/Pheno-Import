@@ -10,10 +10,6 @@ PHENO_ADDRESS=${variable[3]}
 PHENO_USER=${variable[4]}
 PHENO_PWD=${variable[5]}
 
-echo $TM_TOP_NODE
-echo $PHENO_USER
-echo $PHENO_PWD
-
 # Convert to python variables
 echo "# Setup python global variable
 import sys
