@@ -22,8 +22,8 @@ if [[ $TM_DATALOADER_PATH == 'install local version' ]]; then
 
 	# setup sql scripts for tMDataLoader
 	cd sql/postgres
-	psql -d transmart -U $USER -f migrations.sql -h $TRANSMART_DB_HOST
-	psql -d transmart -U $USER -f permissions.sql -h $TRANSMART_DB_HOST
+	psql -d transmart -U postgres -f migrations.sql -h $TRANSMART_DB_HOST
+	psql -d transmart -U postgres -f permissions.sql -h $TRANSMART_DB_HOST
 	psql -d transmart -U $TRANSMART_DB_USR -f procedures.sql -h $TRANSMART_DB_HOST
 fi;
 
