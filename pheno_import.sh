@@ -3,8 +3,8 @@
 source $HOME/.Pheno_Settings.config
 
 # Manually set variables
-# upload_vars(6 elements): Top Node | Study Name | Study ID | Phenotips Address | Phenotips Username | Phenotips Password
-upload_vars=('Public Studies' 'Phenotips' 'PHENOTEST' 'http://localhost:10000' 'Admin' 'admin')
+# upload_vars(6 elements): Study ID | Top Node | Study Name | Phenotips Address | Phenotips Username | Phenotips Password
+upload_vars=('PHENOTEST' 'Public Studies' 'Phenotips' 'http://localhost:10000' 'Admin' 'admin')
 patient_ids=('P0000001' 'P0000002' 'P0000003' 'P0000004' 'P0000005' 'P0000006')
 
 # Get variables from arguments if they exist

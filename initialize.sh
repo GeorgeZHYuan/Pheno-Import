@@ -3,9 +3,9 @@ source $HOME/.Pheno_Settings.config
 
 # Upload variables
 variable=("$@")
-TM_TOP_NODE=${variable[0]}
-TM_STUDY_NAME=${variable[1]}
-TM_STUDY_ID=${variable[2]}
+TM_STUDY_ID=${variable[0]}
+TM_TOP_NODE=${variable[1]}
+TM_STUDY_NAME=${variable[2]}
 PHENO_ADDRESS=${variable[3]}
 PHENO_USER=${variable[4]}
 PHENO_PWD=${variable[5]}

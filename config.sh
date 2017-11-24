@@ -1,6 +1,10 @@
 source conf/setup.config
 PH_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+sudo apt-get update
+sudo apt-get install python-pip
+sudo pip install requests
+
 # Local installation of tMDataLoader
 if [[ $TM_DATALOADER_PATH == 'install local version' ]]; then
 	TM_DATALOADER_PATH=$PH_HOME/tMDataLoader
