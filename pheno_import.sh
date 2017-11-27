@@ -3,9 +3,11 @@
 source $HOME/.Pheno_Settings.config
 
 # Manually set variables
-# upload_vars(6 elements): Study ID | Top Node | Study Name | Phenotips Address | Phenotips Username | Phenotips Password
-upload_vars=('PHENOTEST' 'Public Studies' 'Phenotips' 'http://localhost:10000' 'Admin' 'admin')
+# upload_vars(6 elements): Study ID | Phenotips Address | Phenotips Username | Phenotips Password
+upload_vars=('PHENOTEST' 'TOP NODE' 'STUDY NAME' 'http://localhost:10000' 'Admin' 'admin')
 patient_ids=('P0000001' 'P0000002' 'P0000003' 'P0000004' 'P0000005' 'P0000006')
+
+echo $USER
 
 # Get variables from arguments if they exist
 if [ $# -ne 0 ]; then
@@ -13,7 +15,6 @@ if [ $# -ne 0 ]; then
 	upload_vars=("${@:1:6}")
 	patient_ids=("${@:7}")
 fi
-echo "Upload vars: ${upload_vars[@]}"
 echo "Patient ids: ${patient_ids[@]}"
 
 # Get the patient data from phenotips
