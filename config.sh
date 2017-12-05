@@ -5,6 +5,9 @@ sudo apt-get update
 sudo apt-get install python-pip
 sudo pip install requests
 
+ADDRESS=$TRANSMART_DB_HOST:$TRANSMART_DB_PORT
+echo "$ADDRESS:transmart:$TRANSMART_DB_USR:$TRANSMART_DB_PWD" > ~/.pgpass
+
 # Local installation of tMDataLoader
 if [[ $TM_DATALOADER_PATH == 'install local version' ]]; then
 	TM_DATALOADER_PATH=$PH_HOME/tMDataLoader
@@ -21,8 +24,6 @@ if [[ $TM_DATALOADER_PATH == 'install local version' ]]; then
 		touch ~/.pgpass
 		chmod 0600 ~/.pgpass
 	fi;
-	ADDRESS=$TRANSMART_DB_HOST:$TRANSMART_DB_PORT
-	echo "$ADDRESS:transmart:$TRANSMART_DB_USR:$TRANSMART_DB_PWD" > ~/.pgpass
 
 	# setup sql scripts for tMDataLoader
 	cd sql/postgres
@@ -47,3 +48,8 @@ db.sid = 'xe'" > $TM_CONFIG_FILE_PATH
 echo "PH_HOME=$PH_HOME 
 TM_DATALOADER_PATH=$TM_DATALOADER_PATH
 TM_CONFIG_FILE_PATH=$TM_CONFIG_FILE_PATH" > $HOME/.Pheno_Settings.config
+
+# Setup analysis jobs
+bash $PH_HOME/conf/redeploy.sh $PH_HOME
+
+
