@@ -18,7 +18,7 @@ fi
 echo "Patient ids: ${patient_ids[@]}"
 
 # Get the patient data from phenotips
-$PH_HOME/initialize.sh "${upload_vars[@]}"
+$PH_HOME/conf/initialize.sh "${upload_vars[@]}"
 python $PH_HOME/src/setup_data_file.py "${patient_ids[@]}"
 
 # Upload to transmart
