@@ -10,16 +10,17 @@ This build is made for Linux OS.
 # Setup
 IMPORTANT: Make sure you have direct access to the tranSMART database.
 1. Clone this project into a directory.
-2. Check all variables in `conf/setup.config`.
+2. Set up [tMDataLoader](https://github.com/Clarivate-LSPS/tMDataLoader). There are 2 ways to do this.
    * Using your own version of [tMDataLoader](https://github.com/Clarivate-LSPS/tMDataLoader).
+     * Go and set up [tMDataLoader](https://github.com/Clarivate-LSPS/tMDataLoader) if you have not already.
+     * Once it is set up, go back to Pheno-Import and go to `conf/setup.config`.
      * Set `TM_DATALOADER_PATH` to the directory of your installation.
      * Create a `Config.groovy` file with `dataDir` set to `PHENOTIPS_HOME_DIRECTORY/import-data`. 
      * Set `TM_CONFIG_FILE_PATH` to the path of this `Config.groovy` file.
-   * Using Pheno-Import's [tMDataLoader](https://github.com/Clarivate-LSPS/tMDataLoader).
-     * This setup is a general solution. We recommend the previous option. 
-     * This will only work for postgres databases.
-     * Make sure the username for `TRANSMART_DB_USR` is still not taken in database.
-     * Make sure you have root privileges.
+   * Let Pheno-Import install a local version of [tMDataLoader](https://github.com/Clarivate-LSPS/tMDataLoader).
+     * Go to `conf/setup.config`.
+     * Make sure the username for `TRANSMART_DB_USR` is not taken in database.
+     * Note: This option is a general solution, and may not work for everyone. We recommend the previous option and setting up [tMDataLoader](https://github.com/Clarivate-LSPS/tMDataLoader) specifically for your own machine. 
 3. Run `config.sh` once you have determined the correct settings.
 4. Make sure tomcat has restarted. Manually restart it if did not.
 
