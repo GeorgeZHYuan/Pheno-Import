@@ -14,7 +14,7 @@ This build is made for linux OS.
      * Set `TM_CONFIG_FILE_PATH` to the path of this `Config.groovy` file.
    * Using Pheno-Import's [tMDataLoader](https://github.com/Clarivate-LSPS/tMDataLoader).
      * Pheno-import will install a local version of [tMDataLoader](https://github.com/Clarivate-LSPS/tMDataLoader) set up to insert data into a postgres database
-     * Make sure 'TRANSMART_DB_USR' username is still available in the database.
+     * Make sure `TRANSMART_DB_USR` username is still available in the database.
      * Make sure you have root-privileges.
 2. Run `configure.sh` once you have determined the correct settings.
 
