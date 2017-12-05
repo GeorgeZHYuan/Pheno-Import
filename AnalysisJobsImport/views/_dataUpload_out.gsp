@@ -31,7 +31,9 @@
 	
 		<br />
 		<br />		
-		<span class='AnalysisHeader'>Finished. Refresh page to see changes. (failures wont make changes)</span>
+		<span class='AnalysisHeader'>
+			<p>Finished. Refresh page to see changes.</p>
+		</span>
 		<br />
 		<br />
 		
