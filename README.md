@@ -20,7 +20,7 @@ IMPORTANT: Make sure you have direct access to the tranSMART database.
      * This will only work for postgres databases.
      * Make sure the username for `TRANSMART_DB_USR` is still not taken in database.
      * Make sure you have root privileges.
-3. Run `configure.sh` once you have determined the correct settings.
+3. Run `config.sh` once you have determined the correct settings.
 4. Make sure tomcat has restarted. Manually restart it if did not.
 
 # Running
