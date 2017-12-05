@@ -1,6 +1,6 @@
 # Location Variables
 PH_HOME=$1
-compile_location=$PH_HOME/conf/AnalysisJobsImport
+compile_location=$PH_HOME/AnalysisJobsImport
 edit_location=/var/lib/tomcat7/webapps
 rmod_ctrl_location=/classes/com/recomdata/transmart/data/association
 web_apps_location=/transmart/plugins/rdc-rmodules-16.2

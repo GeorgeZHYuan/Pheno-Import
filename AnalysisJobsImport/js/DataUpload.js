@@ -33,6 +33,13 @@ DataUploadView.prototype.submit_job = function (form) {
 	}
 };
 
+DataUploadView.prototype.get_url = function (url) {
+	if (url[url.length-1] == "/" && url[url.length-2] != "/"){
+		url = url.slice(0, -1);
+	}
+	return url;
+}
+
 
 // get form params
 DataUploadView.prototype.get_form_params = function (form) {
@@ -54,7 +61,7 @@ DataUploadView.prototype.get_form_params = function (form) {
 	return {
 		topNode: cohortInfo[0],
 		studyName: cohortInfo[1],
-		phenoAddress: form.phenoAddress.value,
+		phenoAddress: this.get_url(form.phenoAddress.value),
 		phenoUsername: form.phenoUsername.value,
 		phenoPassword: form.phenoPassword.value,
 		patientIds: uploadPatients,
@@ -106,16 +113,18 @@ DataUploadView.prototype.get_cohort_info = function () {
 // request for patient idsto show for user
 DataUploadView.prototype.get_pheno_patient_list = function () {
 	var job = this;	
-	var url = document.getElementById('phenoAddress').value;
+	var url = this.get_url(document.getElementById('phenoAddress').value);
 	var username = document.getElementById('phenoUsername').value;
 	var password = document.getElementById('phenoPassword').value;
+
+	console.log(url[url.length-1]);
 
 	var params = "url="+url+"&username="+username+"&password="+password;
 	console.log(params);
 
 	var servletAddress = "http://"+window.location.host+"/phenoimport/FetchPatientIds";
-
 	console.log("\""+servletAddress+"\"");
+
 	var request = new XMLHttpRequest();
 	request.open("GET", servletAddress+"?"+params, true);
 	request.send();
