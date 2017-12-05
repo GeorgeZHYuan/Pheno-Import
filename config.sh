@@ -15,8 +15,8 @@ if [[ $TM_DATALOADER_PATH == 'install local version' ]]; then
 	./gradlew deployJar
 
 	# setup tMDataLoader psql user
-	createuser $TRANSMART_DB_USR -s
-	sudo -u $USER psql -c "ALTER USER $TRANSMART_DB_USR WITH PASSWORD '$TRANSMART_DB_PWD';"
+	sudo -u postgres createuser $TRANSMART_DB_USR -s
+	sudo -u postgres psql -c "ALTER USER $TRANSMART_DB_USR WITH PASSWORD '$TRANSMART_DB_PWD';"
 	if [ ! -f ~/.pgpass ]; then
 		touch ~/.pgpass
 		chmod 0600 ~/.pgpass
@@ -27,8 +27,8 @@ if [[ $TM_DATALOADER_PATH == 'install local version' ]]; then
 
 	# setup sql scripts for tMDataLoader
 	cd sql/postgres
-	psql -d transmart -U postgres -f migrations.sql -h $TRANSMART_DB_HOST
-	psql -d transmart -U postgres -f permissions.sql -h $TRANSMART_DB_HOST
+	psql -d transmart -U $TRANSMART_DB_USR -f migrations.sql -h $TRANSMART_DB_HOST
+	psql -d transmart -U $TRANSMART_DB_USR -f permissions.sql -h $TRANSMART_DB_HOST
 	psql -d transmart -U $TRANSMART_DB_USR -f procedures.sql -h $TRANSMART_DB_HOST
 
 	# Setup tMDataLoader config file
