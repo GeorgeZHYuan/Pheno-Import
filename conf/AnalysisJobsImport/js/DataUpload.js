@@ -122,10 +122,11 @@ DataUploadView.prototype.get_pheno_patient_list = function () {
 
  	request.onreadystatechange = function () {
         if (request.readyState == 4 && request.status == 200) {
-			var response = JSON.parse(request.responseText);	
+			var response = JSON.parse(request.responseText);
+			console.log("response is:" );	
 			console.log(response);
 			for (var i = 0; i < response.length; i++) {
-				job.add_patient_info(response.name, response[i].id, true);
+				job.add_patient_info(response[i].name, response[i].id, true);
 			}
         } 
     }	
