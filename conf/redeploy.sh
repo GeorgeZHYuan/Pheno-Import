@@ -14,6 +14,8 @@ sudo cp $compile_location/Rscripts/DataUpload.R $edit_location$web_apps_location
 sudo cp $compile_location/views/DataUpload.gsp $edit_location/transmart/WEB-INF/plugins/rdc-rmodules-16.2/grails-app/views/plugin
 sudo cp $compile_location/views/_dataUpload_out.gsp $edit_location/transmart/WEB-INF/plugins/rdc-rmodules-16.2/grails-app/views/plugin
 sudo cp $compile_location/js/DataUpload.js $edit_location$web_apps_location/js/plugin
+
+sudo rm -r $edit_location/phenoimport
 sudo cp $compile_location/phenoimport.war $edit_location
 
 

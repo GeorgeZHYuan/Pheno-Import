@@ -122,9 +122,11 @@ DataUploadView.prototype.get_pheno_patient_list = function () {
 
  	request.onreadystatechange = function () {
         if (request.readyState == 4 && request.status == 200) {
-			var response = JSON.parse(request.responseText);
-			job.add_patient_info(response.name, response.id, true);
+			var response = JSON.parse(request.responseText);	
 			console.log(response);
+			for (var i = 0; i < response.length; i++) {
+				job.add_patient_info(response.name, response[i].id, true);
+			}
         } 
     }	
 };
@@ -176,18 +178,24 @@ DataUploadView.prototype.parameters_are_valid = function(form_params) {
 	];
 
 	console.log("keys length: " + keys.length);
-	for (var i = 0; i < keys.length; i++){
+	for (var i = 0; i < keys.length-1; i++){
 		console.log("key: " + keys[i]);
 		if (form_params.hasOwnProperty(keys[i])){
-			if (form_params[keys[i]] == null) {
-				console.log("missing value in for: " + keys[i]);
+			if (form_params[keys[i]] == null || form_params[keys[i]] == "") {
+				alert("missing value in for: " + keys[i]);
 				return false;
 			}
 		} else {
-			console.log("form missing parameters");
+			alert("form missing parameters");
 			return false;		
 		}
 	}
+	
+	if (form_params['patientIds'].length < 1) {
+		alert("No patients to upload");
+		return false;
+	}
+
 	return true;
 };
 
