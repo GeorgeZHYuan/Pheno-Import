@@ -5,7 +5,7 @@ Upload [Phenotips data](https://phenotips.org/) to [tranSMART](http://transmartf
 * Uploads data using [tMDataLoader](https://github.com/Clarivate-LSPS/tMDataLoader).
 * User interface in Analysis Jobs used to run the process.
 
-This build is made for Linux OS.
+This build is made for Transmart 16.2
 
 # Setup
 IMPORTANT: Make sure you have direct access to the tranSMART database.
@@ -28,7 +28,7 @@ IMPORTANT: Make sure you have direct access to the tranSMART database.
 **From Analysis Jobs**
 1. Find the Job "Upload Phenotips Data" in the analysis jobs section.
 2. Give the Phenotips website url and a set of valid credentials. (Needed to access the data)
-3. Create a list of patients to upload in the table on the right.
+3. Create a list of patients in the table on the right. Pheno-Import will attempt to import all patients in that table.
 4. Click upload data and refresh page for results. If any errors occur, no changes will be made.
 
 **From Terminal** (only available from the installer side)
