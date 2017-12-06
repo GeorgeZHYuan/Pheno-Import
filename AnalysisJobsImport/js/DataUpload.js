@@ -59,6 +59,7 @@ DataUploadView.prototype.get_form_params = function (form) {
 	console.log("table: " + table.rows.length);
 
 	return {
+		phenoImportLocation: "/home/georgeyuan/Pheno-Import/pheno_import.sh",
 		topNode: cohortInfo[0],
 		studyName: cohortInfo[1],
 		phenoAddress: this.get_url(form.phenoAddress.value),
@@ -112,6 +113,7 @@ DataUploadView.prototype.get_cohort_info = function () {
 
 // request for patient idsto show for user
 DataUploadView.prototype.get_pheno_patient_list = function () {
+	document.getElementById("phDataFetcher").disabled = true;	
 	var job = this;	
 	var url = this.get_url(document.getElementById('phenoAddress').value);
 	var username = document.getElementById('phenoUsername').value;
@@ -137,6 +139,7 @@ DataUploadView.prototype.get_pheno_patient_list = function () {
 			for (var i = 0; i < response.length; i++) {
 				job.add_patient_info(response[i].name, response[i].id, true);
 			}
+			document.getElementById("phDataFetcher").disabled = false;
         } 
     }	
 };

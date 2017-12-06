@@ -43,7 +43,7 @@
 				</div>
 
 				<div>
-					<input type="button" value="Get Patient Ids" onClick="dataUpload.get_pheno_patient_list();"/>
+					<input type="button" value="Get Patient Ids" onClick="dataUpload.get_pheno_patient_list();" id="phDataFetcher"/>
 					<input type="button" value="Clear Unchecked" onClick="dataUpload.clear_unchecked_items();"/>
 					<input type="button" value="Clear All" onClick="dataUpload.clear_all_items();"/>
 				</div>
