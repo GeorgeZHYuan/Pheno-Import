@@ -32,7 +32,7 @@
 				<div>
 					<h3>Patient Upload List:</h3>
 					<input type="text" id="patientIdTextBox" placeholder="Enter Patient Id"/>
-					<input type="button" value="Add" onClick="dataUpload.manual_add_patient_info();"/>
+					<input type="button" value="Add" onClick="dataUpload.manualAddPatientInfo();"/>
 				</div>
 	
 				<div style="padding-top:10px; padding-bottom:10px; width:300px">
@@ -43,9 +43,9 @@
 				</div>
 
 				<div>
-					<input type="button" value="Get Patient Ids" onClick="dataUpload.get_pheno_patient_list();" id="phDataFetcher"/>
-					<input type="button" value="Clear Unchecked" onClick="dataUpload.clear_unchecked_items();"/>
-					<input type="button" value="Clear All" onClick="dataUpload.clear_all_items();"/>
+					<input type="button" value="Get Patient Ids" onClick="dataUpload.getPhenoPatientList();" id="phDataFetcher"/>
+					<input type="button" value="Select All" onClick="dataUpload.toggleSelectAll();"/>
+					<input type="button" value="Remove" onClick="dataUpload.clearCheckedItems();"/>
 				</div>
 			</div>
 		</div>
