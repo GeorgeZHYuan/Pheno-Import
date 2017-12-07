@@ -153,12 +153,13 @@ DataUploadView.prototype.getPhenoPatientList = function () {
 	request.send();
  	request.onreadystatechange = function () {
         if (request.readyState == 4 && request.status == 200) {
-			var response = JSON.parse(request.responseText);
-			for (var i = 0; i < response.length; i++) {
-				job.addPatientInfo(response[i].name, response[i].id);
-				console.log("Adding: " + response[i].name + ", "+ response[i].id);
-			}
-			document.getElementById("phDataFetcher").disabled = false;
+		document.getElementById("phDataFetcher").disabled = false;
+		var response = JSON.parse(request.responseText);
+		for (var i = 0; i < response.length; i++) {
+			job.addPatientInfo(response[i].name, response[i].id);
+			console.log("Adding: " + response[i].name + ", "+ response[i].id);
+		}
+			
         } 
     }	
 };
