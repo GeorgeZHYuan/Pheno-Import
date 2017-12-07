@@ -21,7 +21,7 @@ IMPORTANT: Make sure you have direct access to the tranSMART database.
      * Go to `conf/setup.config`.
      * Make sure the username for `TRANSMART_DB_USR` is not taken in database.
      * Note: This option is a general solution, and may not work for everyone. We recommend the previous option and setting up [tMDataLoader](https://github.com/Clarivate-LSPS/tMDataLoader) specifically for your own machine. 
-3. Run `config.sh` once you have determined the correct settings.
+3. From the Pheno-Import directry run `config.sh`.
 4. Make sure tomcat has restarted. Manually restart it if did not.
 
 # Running
