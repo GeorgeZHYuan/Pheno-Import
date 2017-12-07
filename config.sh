@@ -23,7 +23,7 @@ if [[ $TM_DATALOADER_PATH == 'install local version' ]]; then
 	fi;
 
 	ADDRESS=$TRANSMART_DB_HOST:$TRANSMART_DB_PORT
-	echo "$ADDRESS:transmart:$TRANSMART_DB_USR:$TRANSMART_DB_PWD" > ~/.pgpass
+	echo "$ADDRESS:transmart:$TRANSMART_DB_USR:$TRANSMART_DB_PWD" >> ~/.pgpass
 
 	# setup sql scripts for tMDataLoader
 	cd sql/postgres
