@@ -26,7 +26,7 @@ DataUploadView.prototype.submit_job = function (form) {
 
 	// if formParams are submitable
 	if (this.parametersAreValid(formParams)) {
-        submitJob(formParams);
+        	submitJob(formParams);
 	}
 };
 
@@ -101,11 +101,11 @@ DataUploadView.prototype.clearCheckedItems = function () {
 	var checkboxes = document.getElementsByClassName('UploadConf');	
 	
 	for (var i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].checked == true) {
+      	if (checkboxes[i].checked == true) {
 		console.log("Removing: " + table.rows[i].cells[0].innerHTML);
-        table.deleteRow(i);
+        	table.deleteRow(i);
 		i -= 1;
-      }
+      	}
     }
 };
 
