@@ -22,11 +22,11 @@ DataUploadView.prototype.constructor = DataUploadView;
 // submit analysis job
 DataUploadView.prototype.submit_job = function (form) {
 	// get formParams
-    var formParams = this.get_form_params(form);
+    	var formParams = this.get_form_params(form);
 
 	// if formParams are submitable
 	if (this.parametersAreValid(formParams)) {
-        	submitJob(formParams);
+		submitJob(formParams);
 	}
 };
 
@@ -37,11 +37,11 @@ DataUploadView.prototype.get_form_params = function (form) {
 	var cohortInfo = this.getCohortInfo();
 	var uploadPatients = [];
 	
-    for (var i = 0; i < checkboxes.length; i++) {
-//      if (checkboxes[i].checked == true) {
-        uploadPatients.push(table.rows[i].cells[0].innerHTML);
-//      }
-    }
+	for (var i = 0; i < checkboxes.length; i++) {
+//      	if (checkboxes[i].checked == true) {
+        	uploadPatients.push(table.rows[i].cells[0].innerHTML);
+//      	}
+    	}
 
 	return {
 		phenoImportLocation: "$HOME/Pheno-Import/pheno_import.sh",
@@ -178,12 +178,12 @@ DataUploadView.prototype.manualAddPatientInfo = function () {
 DataUploadView.prototype.addPatientInfo = function (name, id) {
 	var table = document.getElementById("patientIdTable");
 	var row = table.insertRow(0);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
+	var cell1 = row.insertCell(0);
+	var cell2 = row.insertCell(1);
 	var cell3 = row.insertCell(2);
 
-    cell1.innerHTML = id;
-    cell2.innerHTML = name;
+	cell1.innerHTML = id;
+	cell2.innerHTML = name;
 	cell3.innerHTML = "<input type=\"checkbox\" class=\"UploadConf\"/>";
 };
 
