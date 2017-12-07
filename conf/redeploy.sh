@@ -45,6 +45,9 @@ sudo service tomcat7 restart
 
 
 #register analysis job page
-command="insert into searchapp.plugin_module(module_seq, plugin_seq, name, module_name, form_page, params) values (112 + 1, 1, 'Upload Phenotips Data', 'dataUpload', 'DataUpload', '{}');"
+res=$(echo "SELECT module_seq FROM searchapp.plugin_module ORDER BY module_seq desc limit 1;" | sudo -u postgres psql transmart -t)
+number=$(echo $res | xargs)
+command="insert into searchapp.plugin_module(module_seq, plugin_seq, name, module_name, form_page, params) values ($number + 1, 1, 'Upload Phenotips Data', 'dataUpload', 'DataUpload', '{}');"
 echo "$command" |  sudo -u postgres psql transmart
+
 
