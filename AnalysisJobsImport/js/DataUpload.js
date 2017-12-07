@@ -44,7 +44,7 @@ DataUploadView.prototype.get_form_params = function (form) {
     }
 
 	return {
-		phenoImportLocation: "/home/georgeyuan/Pheno-Import/pheno_import.sh",
+		phenoImportLocation: "$HOME/Pheno-Import/pheno_import.sh",
 		topNode: cohortInfo[0],
 		studyName: cohortInfo[1],
 		phenoAddress: this.getUrl(form.phenoAddress.value),

@@ -52,7 +52,7 @@ TM_CONFIG_FILE_PATH=$TM_CONFIG_FILE_PATH" > $HOME/.Pheno_Settings.config
 # Setup analysis jobs
 scriptPath=$PH_HOME/pheno_import.sh
 replacement="		phenoImportLocation: \""${scriptPath//\//\\/}\",
-sed -i "62s/.*/$replacement/" $PH_HOME/AnalysisJobsImport/js/DataUpload.js
+sed -i "47s/.*/$replacement/" $PH_HOME/AnalysisJobsImport/js/DataUpload.js
 bash $PH_HOME/conf/redeploy.sh $PH_HOME
 
 
