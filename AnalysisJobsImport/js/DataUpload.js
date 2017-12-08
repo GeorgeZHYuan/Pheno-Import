@@ -38,13 +38,13 @@ DataUploadView.prototype.get_form_params = function (form) {
 	var uploadPatients = [];
 	
 	for (var i = 0; i < checkboxes.length; i++) {
-//      	if (checkboxes[i].checked == true) {
-        	uploadPatients.push(table.rows[i].cells[0].innerHTML);
-//      	}
+      		if (checkboxes[i].checked == true) {
+        		uploadPatients.push(table.rows[i].cells[0].innerHTML);
+      		}
     	}
 
 	return {
-		phenoImportLocation: "$HOME/Pheno-Import/pheno_import.sh",
+		phenoImportLocation: "/home/georgeyuan/Pheno-Import/pheno_import.sh",
 		topNode: cohortInfo[0],
 		studyName: cohortInfo[1],
 		phenoAddress: this.getUrl(form.phenoAddress.value),

@@ -6,11 +6,13 @@ from Data_File import Data_File
 sys.path.insert(0, PH_HOME+'/templates')
 from JSON_labels import LABEL_FORMATS
 
+# get upload variables
 patient_ids = sys.argv[1:]
 patients_found = []
 patients_ommited = []
 data_file = Data_File(TM, PH_HOME)
 
+# parse patient data into arrays
 for patient_id in patient_ids:
 	print "getting patient:" + patient_id
 	r = requests.get(PH.ADDRESS+'/rest/patients/'+patient_id, auth=(PH.USER, PH.PWD))
@@ -20,4 +22,5 @@ for patient_id in patient_ids:
 		data_file.add_patient(r.json(), LABEL_FORMATS)
 		patients_found.append(patient_id)
 
+# generate upload tables
 data_file.generate_file()

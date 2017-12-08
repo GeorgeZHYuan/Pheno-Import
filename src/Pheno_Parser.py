@@ -8,7 +8,7 @@ class Pheno_Parser:
 	def get_data(self, json):
 		raise NotImplementedError("Subclass must implement abstract method")
 
-
+# parsing direct key:value
 class Direct_Value_Parser(Pheno_Parser):
 	def get_data(self, json):
 		data = []
@@ -27,7 +27,7 @@ class Direct_Value_Parser(Pheno_Parser):
 				data.append(temp)
 		return data
 
-
+#parsing key:obj
 class Structured_Value_Parser(Pheno_Parser):	
 	def get_data(self, json):
 		data = []		
@@ -58,6 +58,7 @@ class Structured_Value_Parser(Pheno_Parser):
 		return data
 
 
+# mulitiple json keys for information about feature
 class Split_Value_Parser(Pheno_Parser):
 	def get_data(self, json):
 		data = []
@@ -99,10 +100,4 @@ class Split_Value_Parser(Pheno_Parser):
 						for key2 in label[key]:
 							data[types[key+":"+key2]].append(entry2[key2])
 		return data
-
-
-
-				
-					
-
 

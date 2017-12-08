@@ -29,7 +29,7 @@ sudo cp $compile_location/phenoimport.war $edit_location
 # ********* if choosing to use this direct insertion method.  *********
 # *********                                                   *********
 # ********* Check the insert as analysis job option section   *********
-# ********* To avoid this.									  *********
+# ********* To avoid this.				      *********
 # *********                                                   *********
 # *********************************************************************
 # *********************************************************************

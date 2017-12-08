@@ -11,6 +11,7 @@ class Data_File:
 		self.setup_directories(hm_dir, tm)
 
 
+	# Create folders for tMDataLoader to use
 	def setup_directories(self, hm_dir, tm):
 		shutil.rmtree(hm_dir+'/import-data', ignore_errors=True)
 		os.makedirs(self.path)
@@ -18,15 +19,23 @@ class Data_File:
 		copyfile(hm_dir+'/templates/data_labels.txt', self.path+'/'+'clinical.txt')
 
 
+	# Add a patient into the patient_info_list array
 	def add_patient(self, json, json_label_formats):
 		extractedInformation = [self.study_id]
+		
+		# Three Parsing Methods
 		parsers = [Direct_Value_Parser(), Structured_Value_Parser(), Split_Value_Parser()]
+
+		# Parse data into an array
 		for i, parser in enumerate(parsers):
 			parser.set_format(json_label_formats[i])
 			extractedInformation += parser.get_data(json)
+
+		# add array into the patient_info_list
 		self.patient_info_list.append(extractedInformation[:2] + extractedInformation[1:])
 		
-
+	
+	# Turn patient_info_list into a table
 	def generate_file(self):		
 		with open(self.path+'/clinical.txt', 'a+') as file:
 			for patient_info in self.patient_info_list:
