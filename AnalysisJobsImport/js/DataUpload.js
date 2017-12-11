@@ -8,6 +8,7 @@ function loadDataUploadView() {};
 // constructor
 var DataUploadView = function () {
     RmodulesView.call(this);
+	this.patientsMustBeChecked = true;
 };
 
 
@@ -38,10 +39,10 @@ DataUploadView.prototype.get_form_params = function (form) {
 	var uploadPatients = [];
 	
 	for (var i = 0; i < checkboxes.length; i++) {
-      		if (checkboxes[i].checked == true) {
-        		uploadPatients.push(table.rows[i].cells[0].innerHTML);
-      		}
-    	}
+		if (!(this.patientsMustBeChecked && checkboxes[i].checked == false)){
+	    	uploadPatients.push(table.rows[i].cells[0].innerHTML);
+		}
+	}
 
 	return {
 		phenoImportLocation: "/home/georgeyuan/Pheno-Import/pheno_import.sh",
@@ -72,13 +73,13 @@ DataUploadView.prototype.parametersAreValid = function(form_params) {
 				return false;
 			}
 		} else {
-			alert("form missing parameters");
+			alert("Error occured while loading page. Please Refresh");
 			return false;		
 		}
 	}
 	
 	if (form_params['patientIds'].length < 1) {
-		alert("No patients to upload");
+		alert("No patients selected");
 		return false;
 	}
 
@@ -102,9 +103,9 @@ DataUploadView.prototype.clearCheckedItems = function () {
 	
 	for (var i = 0; i < checkboxes.length; i++) {
       	if (checkboxes[i].checked == true) {
-		console.log("Removing: " + table.rows[i].cells[0].innerHTML);
-        	table.deleteRow(i);
-		i -= 1;
+			console.log("Removing: " + table.rows[i].cells[0].innerHTML);
+		    	table.deleteRow(i);
+			i -= 1;
       	}
     }
 };
@@ -118,6 +119,7 @@ DataUploadView.prototype.toggleSelectAll = function () {
 	if (checkboxes[0].checked == true) {
 		selectState = false;
 	}
+	
 	for (var i = 0; i < checkboxes.length; i++) {
      	checkboxes[i].checked = selectState;
     }
@@ -126,6 +128,12 @@ DataUploadView.prototype.toggleSelectAll = function () {
 // get topNode and studyName for study
 DataUploadView.prototype.getCohortInfo = function () {
 	var info = GLOBAL.CurrentSubsetQueries[1];
+	
+	if (info == null || info == "") {
+		alert("Cohorts not found");
+		return["", ""];
+	}
+
 	var infoStart = info.search("<tooltip>\\\\");
 	var infoEnd = info.search("\\\\</tooltip>");
 	
@@ -153,12 +161,12 @@ DataUploadView.prototype.getPhenoPatientList = function () {
 	request.send();
  	request.onreadystatechange = function () {
         if (request.readyState == 4 && request.status == 200) {
-		document.getElementById("phDataFetcher").disabled = false;
-		var response = JSON.parse(request.responseText);
-		for (var i = 0; i < response.length; i++) {
-			job.addPatientInfo(response[i].name, response[i].id);
-			console.log("Adding: " + response[i].name + ", "+ response[i].id);
-		}
+			document.getElementById("phDataFetcher").disabled = false;
+			var response = JSON.parse(request.responseText);
+			for (var i = 0; i < response.length; i++) {
+				job.addPatientInfo(response[i].name, response[i].id);
+				console.log("Adding: " + response[i].name + ", "+ response[i].id);
+			}
 			
         } 
     }	
@@ -184,7 +192,7 @@ DataUploadView.prototype.addPatientInfo = function (name, id) {
 
 	cell1.innerHTML = id;
 	cell2.innerHTML = name;
-	cell3.innerHTML = "<input type=\"checkbox\" class=\"UploadConf\"/>";
+	cell3.innerHTML = "<input type=\"checkbox\" class=\"UploadConf\" checked = true/>";
 };
 
 
