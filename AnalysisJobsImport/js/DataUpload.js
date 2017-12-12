@@ -31,6 +31,7 @@ DataUploadView.prototype.submit_job = function (form) {
 	}
 };
 
+
 // get form params
 DataUploadView.prototype.get_form_params = function (form) {
 	var table = document.getElementById("patientIdTable");
@@ -103,9 +104,9 @@ DataUploadView.prototype.clearCheckedItems = function () {
 	
 	for (var i = 0; i < checkboxes.length; i++) {
       	if (checkboxes[i].checked == true) {
-			console.log("Removing: " + table.rows[i].cells[0].innerHTML);
-		    	table.deleteRow(i);
-			i -= 1;
+		console.log("Removing: " + table.rows[i].cells[0].innerHTML);
+	    	table.deleteRow(i);
+		i -= 1;
       	}
     }
 };
@@ -124,6 +125,7 @@ DataUploadView.prototype.toggleSelectAll = function () {
      	checkboxes[i].checked = selectState;
     }
 }
+
 
 // get topNode and studyName for study
 DataUploadView.prototype.getCohortInfo = function () {
@@ -161,7 +163,7 @@ DataUploadView.prototype.getPhenoPatientList = function () {
 	request.send();
 	request.onreadystatechange = function () {
 		if (request.readyState == 4 && request.status == 200) {
-		document.getElementById("phDataFetcher").disabled = false;
+			document.getElementById("phDataFetcher").disabled = false;
 			var response = JSON.parse(request.responseText);
 	
 			for (var i = 0; i < response.length; i++) {
@@ -172,6 +174,7 @@ DataUploadView.prototype.getPhenoPatientList = function () {
 	}	
 };
 
+
 // add patient to table from user input
 DataUploadView.prototype.manualAddPatientInfo = function () {
 	var patientId = document.getElementById("patientIdTextBox").value;
@@ -181,6 +184,7 @@ DataUploadView.prototype.manualAddPatientInfo = function () {
 	}
 	
 };
+
 
 // add patient to table
 DataUploadView.prototype.addPatientInfo = function (name, id) {
@@ -194,6 +198,7 @@ DataUploadView.prototype.addPatientInfo = function (name, id) {
 	cell2.innerHTML = name;
 	cell3.innerHTML = "<input type=\"checkbox\" class=\"UploadConf\" checked = true/>";
 };
+
 
 
 // hide or show password
