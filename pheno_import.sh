@@ -1,5 +1,5 @@
 #!/bin/bash
-source $HOME/.Pheno_Settings.config
+source $HOME/.pheno_settings.config
 
 # Manually set variables
 # upload_vars(6 elements): Study ID | Phenotips Address | Phenotips Username | Phenotips Password

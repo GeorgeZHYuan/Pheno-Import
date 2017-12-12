@@ -1,5 +1,5 @@
 # Analysis Job Variable
-source $HOME/.Pheno_Settings.config
+source $HOME/.pheno_settings.config
 
 # Upload variables
 variable=("$@")
