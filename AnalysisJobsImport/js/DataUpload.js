@@ -8,6 +8,7 @@ function loadDataUploadView() {};
 // constructor
 var DataUploadView = function () {
     RmodulesView.call(this);
+	this.patientsMustBeChecked = true;
 };
 
 
@@ -30,6 +31,7 @@ DataUploadView.prototype.submit_job = function (form) {
 	}
 };
 
+
 // get form params
 DataUploadView.prototype.get_form_params = function (form) {
 	var table = document.getElementById("patientIdTable");
@@ -38,13 +40,13 @@ DataUploadView.prototype.get_form_params = function (form) {
 	var uploadPatients = [];
 	
 	for (var i = 0; i < checkboxes.length; i++) {
-      		if (checkboxes[i].checked == true) {
-        		uploadPatients.push(table.rows[i].cells[0].innerHTML);
-      		}
-    	}
+		if (!(this.patientsMustBeChecked && checkboxes[i].checked == false)){
+	    	uploadPatients.push(table.rows[i].cells[0].innerHTML);
+		}
+	}
 
 	return {
-		phenoImportLocation: "/home/georgeyuan/Pheno-Import/pheno_import.sh",
+		phenoImportLocation: "~/transmart/Pheno-Import/pheno_import.sh",
 		topNode: cohortInfo[0],
 		studyName: cohortInfo[1],
 		phenoAddress: this.getUrl(form.phenoAddress.value),
@@ -72,13 +74,13 @@ DataUploadView.prototype.parametersAreValid = function(form_params) {
 				return false;
 			}
 		} else {
-			alert("form missing parameters");
+			alert("Error occured while loading page. Please Refresh");
 			return false;		
 		}
 	}
 	
 	if (form_params['patientIds'].length < 1) {
-		alert("No patients to upload");
+		alert("No patients selected");
 		return false;
 	}
 
@@ -103,7 +105,7 @@ DataUploadView.prototype.clearCheckedItems = function () {
 	for (var i = 0; i < checkboxes.length; i++) {
       	if (checkboxes[i].checked == true) {
 		console.log("Removing: " + table.rows[i].cells[0].innerHTML);
-        	table.deleteRow(i);
+	    	table.deleteRow(i);
 		i -= 1;
       	}
     }
@@ -118,14 +120,22 @@ DataUploadView.prototype.toggleSelectAll = function () {
 	if (checkboxes[0].checked == true) {
 		selectState = false;
 	}
+	
 	for (var i = 0; i < checkboxes.length; i++) {
      	checkboxes[i].checked = selectState;
     }
 }
 
+
 // get topNode and studyName for study
 DataUploadView.prototype.getCohortInfo = function () {
 	var info = GLOBAL.CurrentSubsetQueries[1];
+	
+	if (info == null || info == "") {
+		alert("Cohorts not found");
+		return["", ""];
+	}
+
 	var infoStart = info.search("<tooltip>\\\\");
 	var infoEnd = info.search("\\\\</tooltip>");
 	
@@ -148,21 +158,22 @@ DataUploadView.prototype.getPhenoPatientList = function () {
 	var params = "url="+url+"&username="+username+"&password="+password;
 	var servletAddress = "http://"+window.location.host+"/phenoimport/FetchPatientIds";
 	var request = new XMLHttpRequest();
-	
+
 	request.open("GET", servletAddress+"?"+params, true);
 	request.send();
- 	request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
-		document.getElementById("phDataFetcher").disabled = false;
-		var response = JSON.parse(request.responseText);
-		for (var i = 0; i < response.length; i++) {
-			job.addPatientInfo(response[i].name, response[i].id);
-			console.log("Adding: " + response[i].name + ", "+ response[i].id);
-		}
-			
-        } 
-    }	
+	request.onreadystatechange = function () {
+		if (request.readyState == 4 && request.status == 200) {
+			document.getElementById("phDataFetcher").disabled = false;
+			var response = JSON.parse(request.responseText);
+	
+			for (var i = 0; i < response.length; i++) {
+				job.addPatientInfo(response[i].name, response[i].id);
+				console.log("Adding: " + response[i].name + ", "+ response[i].id);
+			}
+		} 
+	}	
 };
+
 
 // add patient to table from user input
 DataUploadView.prototype.manualAddPatientInfo = function () {
@@ -174,6 +185,7 @@ DataUploadView.prototype.manualAddPatientInfo = function () {
 	
 };
 
+
 // add patient to table
 DataUploadView.prototype.addPatientInfo = function (name, id) {
 	var table = document.getElementById("patientIdTable");
@@ -184,8 +196,9 @@ DataUploadView.prototype.addPatientInfo = function (name, id) {
 
 	cell1.innerHTML = id;
 	cell2.innerHTML = name;
-	cell3.innerHTML = "<input type=\"checkbox\" class=\"UploadConf\"/>";
+	cell3.innerHTML = "<input type=\"checkbox\" class=\"UploadConf\" checked = true/>";
 };
+
 
 
 // hide or show password
@@ -202,3 +215,4 @@ DataUploadView.prototype.togglePasswordDisplay = function (checkbox){
 
 // init heat map view instance
 var dataUpload = new DataUploadView();
+

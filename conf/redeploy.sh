@@ -4,6 +4,7 @@ compile_location=$PH_HOME/AnalysisJobsImport
 edit_location=/var/lib/tomcat7/webapps
 rmod_ctrl_location=/classes/com/recomdata/transmart/data/association
 web_apps_location=/transmart/plugins/rdc-rmodules-16.2
+PAGE_NAME="Upload Phenotips Data"
 
 # Adding new files
 sudo mkdir $edit_location$web_apps_location/Rscripts/DataUpload
@@ -45,9 +46,10 @@ sudo service tomcat7 restart
 
 
 #register analysis job page
+sudo -u postgres psql transmart -c "DELETE FROM searchapp.plugin_module WHERE name='$PAGE_NAME';" -t
 res=$(echo "SELECT module_seq FROM searchapp.plugin_module ORDER BY module_seq desc limit 1;" | sudo -u postgres psql transmart -t)
 number=$(echo $res | xargs)
-command="insert into searchapp.plugin_module(module_seq, plugin_seq, name, module_name, form_page, params) values ($number + 1, 1, 'Upload Phenotips Data', 'dataUpload', 'DataUpload', '{}');"
+command="insert into searchapp.plugin_module(module_seq, plugin_seq, name, module_name, form_page, params) values ($number + 1, 1, '$PAGE_NAME', 'dataUpload', 'DataUpload', '{}');"
 echo "$command" |  sudo -u postgres psql transmart
 
 

@@ -3,21 +3,17 @@ source $HOME/.Pheno_Settings.config
 
 # Upload variables
 variable=("$@")
-TM_STUDY_ID=${variable[0]}
-TM_TOP_NODE=${variable[1]}
-TM_STUDY_NAME=${variable[2]}
-PHENO_ADDRESS=${variable[3]}
-PHENO_USER=${variable[4]}
-PHENO_PWD=${variable[5]}
+TM_TOP_NODE=${variable[0]}
+TM_STUDY_NAME=${variable[1]}
+PHENO_ADDRESS=${variable[2]}
+PHENO_USER=${variable[3]}
+PHENO_PWD=${variable[4]}
 
-#cmd_1="SELECT name_char FROM i2b2demodata.concept_dimension WHERE sourcesystem_cd='PHENOTEST' ORDER BY concept_path ASC LIMIT 1;"
-#TM_STUDY_NAME=$(echo $cmd_1 | sudo -u postgres psql -t transmart)
-#TM_STUDY_NAME=$(echo "${TM_STUDY_NAME//" "}")
-
-#cmd_2="SELECT concept_path FROM i2b2demodata.concept_dimension WHERE sourcesystem_cd='PHENOTEST' ORDER BY concept_path ASC LIMIT 1;"
-#TM_TOP_NODE=$(echo $cmd_2 | sudo -u postgres psql -t transmart)
-#TM_TOP_NODE=$(echo ${TM_TOP_NODE//"\\"})
-#TM_TOP_NODE=$(echo ${TM_TOP_NODE//$TM_STUDY_NAME})
+# Get study id base off study name and top folder
+TOP_NODE_NAME="\\"$TM_TOP_NODE"\\"$TM_STUDY_NAME"\\"
+PSQL_COMMAND="SELECT sourcesystem_cd FROM i2b2demodata.concept_dimension WHERE name_char='$TM_STUDY_NAME' AND concept_path='$TOP_NODE_NAME' ORDER BY sourcesystem_cd ASC;"
+STUDY_ID=$(echo $(psql -d transmart -U $TRANSMART_DB_USR -h $TRANSMART_DB_HOST -c "$PSQL_COMMAND" -t))
+TM_STUDY_ID=$(echo ${STUDY_ID//"\\"})
 
 echo "STUDYID:" $TM_STUDY_ID
 echo "TOPNODE:" $TM_TOP_NODE

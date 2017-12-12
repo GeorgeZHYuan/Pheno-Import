@@ -1,19 +1,16 @@
 #!/bin/bash
-
 source $HOME/.Pheno_Settings.config
 
 # Manually set variables
 # upload_vars(6 elements): Study ID | Phenotips Address | Phenotips Username | Phenotips Password
-upload_vars=('PHENOTEST' 'TOP NODE' 'STUDY NAME' 'http://localhost:10000' 'Admin' 'admin')
+upload_vars=('TOP NODE' 'STUDY NAME' 'http://localhost:10000' 'Admin' 'admin')
 patient_ids=('P0000001' 'P0000002' 'P0000003' 'P0000004' 'P0000005' 'P0000006')
-
-echo $USER
 
 # Get and overwrite upload variables if terminal arguments exist
 if [ $# -ne 0 ]; then
 	echo 'Obtained upload variables from arguments'
-	upload_vars=("${@:1:6}") 
-	patient_ids=("${@:7}")
+	upload_vars=("${@:1:5}") 
+	patient_ids=("${@:6}")
 fi
 echo "Patient ids: ${patient_ids[@]}"
 
