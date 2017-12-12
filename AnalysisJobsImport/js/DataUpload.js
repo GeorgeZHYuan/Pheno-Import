@@ -45,7 +45,7 @@ DataUploadView.prototype.get_form_params = function (form) {
 	}
 
 	return {
-		phenoImportLocation: "/home/georgeyuan/Pheno-Import/pheno_import.sh",
+		phenoImportLocation: "~/transmart/Pheno-Import/pheno_import.sh",
 		topNode: cohortInfo[0],
 		studyName: cohortInfo[1],
 		phenoAddress: this.getUrl(form.phenoAddress.value),
@@ -156,20 +156,20 @@ DataUploadView.prototype.getPhenoPatientList = function () {
 	var params = "url="+url+"&username="+username+"&password="+password;
 	var servletAddress = "http://"+window.location.host+"/phenoimport/FetchPatientIds";
 	var request = new XMLHttpRequest();
-	
+
 	request.open("GET", servletAddress+"?"+params, true);
 	request.send();
- 	request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
-			document.getElementById("phDataFetcher").disabled = false;
+	request.onreadystatechange = function () {
+		if (request.readyState == 4 && request.status == 200) {
+		document.getElementById("phDataFetcher").disabled = false;
 			var response = JSON.parse(request.responseText);
+	
 			for (var i = 0; i < response.length; i++) {
 				job.addPatientInfo(response[i].name, response[i].id);
 				console.log("Adding: " + response[i].name + ", "+ response[i].id);
 			}
-			
-        } 
-    }	
+		} 
+	}	
 };
 
 // add patient to table from user input
@@ -210,3 +210,4 @@ DataUploadView.prototype.togglePasswordDisplay = function (checkbox){
 
 // init heat map view instance
 var dataUpload = new DataUploadView();
+
