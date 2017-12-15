@@ -24,8 +24,7 @@
 				</div>
 
 				<input type="checkbox" onchange="dataUpload.togglePasswordDisplay(this);"/> Show password <br><br>
-				<input type="button" value="Upload Data" onClick="dataUpload.submit_job(this.form);" class="runAnalysisBtn"/>
-				<input type="button" value="Upload Data 2" onClick="dataUpload.submitJob2(this.form);" class="runAnalysisBtn" id="uploadButton"/>
+				<input type="button" value="Upload Data" onClick="dataUpload.submit_job(this.form);" class="runAnalysisBtn" id="phenoUploadButton"/>
 			</div>
 
 			<div class="right">

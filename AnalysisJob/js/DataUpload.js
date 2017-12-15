@@ -27,14 +27,13 @@ DataUploadView.prototype.submit_job = function (form) {
 
 	// if formParams are submitable
 	if (this.parametersAreValid(formParams)) {
-		submitJob(formParams);
+		this.submitJob(formParams);
 	}
 };
 
-DataUploadView.prototype.submitJob2 = function (form) {
-	// get formParams
-    	var formParams = this.get_form_params(form);
-
+// send data to servlet
+DataUploadView.prototype.submitJob = function (formParams) {
+	document.getElementById("phenoUploadButton").disabled = true;
 	$.ajax({
 		url: '/phenoimport/RunPhenoImport',
 		type: 'GET',
@@ -42,10 +41,12 @@ DataUploadView.prototype.submitJob2 = function (form) {
 		dataTypr: 'json',
 		contentType: 'application/json; charset=utf-8',
 		success: function (response) {
-		    alert(response);
+		    	alert(response);
+			document.getElementById("phenoUploadButton").disabled = true;
 		},
 		error: function (xhr) {
-		    alert(xhr.responseText);
+		   	 alert(xhr.responseText);
+			document.getElementById("phenoUploadButton").disabled = true;
 		}
 	});
 }
@@ -122,12 +123,12 @@ DataUploadView.prototype.clearCheckedItems = function () {
 	var checkboxes = document.getElementsByClassName('UploadConf');	
 	
 	for (var i = 0; i < checkboxes.length; i++) {
-      	if (checkboxes[i].checked == true) {
-		console.log("Removing: " + table.rows[i].cells[0].innerHTML);
-	    	table.deleteRow(i);
-		i -= 1;
-      	}
-    }
+		if (checkboxes[i].checked == true) {
+			console.log("Removing: " + table.rows[i].cells[0].innerHTML);
+			table.deleteRow(i);
+			i -= 1;
+		}
+	}
 };
 
 // select or unselect all patients in patient table
@@ -141,8 +142,8 @@ DataUploadView.prototype.toggleSelectAll = function () {
 	}
 	
 	for (var i = 0; i < checkboxes.length; i++) {
-     	checkboxes[i].checked = selectState;
-    }
+		checkboxes[i].checked = selectState;
+	}
 }
 
 
@@ -234,5 +235,4 @@ DataUploadView.prototype.togglePasswordDisplay = function (checkbox){
 
 // init heat map view instance
 var dataUpload = new DataUploadView();
-
 

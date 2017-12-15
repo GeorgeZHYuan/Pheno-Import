@@ -102,6 +102,3 @@ sudo chown tomcat7:tomcat7 $TOMCAT_HOME/.pheno_settings.config
 
 # Restart tomcat7 to apply changes
 sudo service tomcat7 restart
-
-
-
