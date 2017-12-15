@@ -4,14 +4,13 @@
 
 <div id="analysisWidget">
     <h2>Variable Selection</h2>
+
     <form id="analysisForm">
-
 		<div class="container">
-
 			<div class="left" style="padding-right:10px;">
 				<div style="padding-bottom: 10px;">
 					<h3>Phenotips Address:</h3>
-					<input type="text" id="phenoAddress" placeholder="http://localhost:10000"/>
+					<input type="text" id="phenoAddress" placeholder="http://localhost:10000" value="http://localhost:10000"/>
 				</div>
 				
 				<div style="padding-bottom:10px;">
@@ -26,6 +25,7 @@
 
 				<input type="checkbox" onchange="dataUpload.togglePasswordDisplay(this);"/> Show password <br><br>
 				<input type="button" value="Upload Data" onClick="dataUpload.submit_job(this.form);" class="runAnalysisBtn"/>
+				<input type="button" value="Upload Data 2" onClick="dataUpload.submitJob2(this.form);" class="runAnalysisBtn" id="uploadButton"/>
 			</div>
 
 			<div class="right">
@@ -34,7 +34,7 @@
 					<input type="text" id="patientIdTextBox" placeholder="Enter Patient Id"/>
 					<input type="button" value="Add" onClick="dataUpload.manualAddPatientInfo();"/>
 				</div>
-	
+
 				<div style="padding-top:10px; padding-bottom:10px; width:300px">
 					<table id="patientIdTable" class="phenoimport-scrollable-table">
 						<tbody>

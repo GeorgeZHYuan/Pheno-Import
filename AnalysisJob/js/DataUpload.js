@@ -31,6 +31,25 @@ DataUploadView.prototype.submit_job = function (form) {
 	}
 };
 
+DataUploadView.prototype.submitJob2 = function (form) {
+	// get formParams
+    	var formParams = this.get_form_params(form);
+
+	$.ajax({
+		url: '/phenoimport/RunPhenoImport',
+		type: 'GET',
+		data: formParams,
+		dataTypr: 'json',
+		contentType: 'application/json; charset=utf-8',
+		success: function (response) {
+		    alert(response);
+		},
+		error: function (xhr) {
+		    alert(xhr.responseText);
+		}
+	});
+}
+
 
 // get form params
 DataUploadView.prototype.get_form_params = function (form) {
@@ -46,7 +65,7 @@ DataUploadView.prototype.get_form_params = function (form) {
 	}
 
 	return {
-		phenoImportLocation: "~/transmart/Pheno-Import/pheno_import.sh",
+		phenoImportLocation: "/home/gzyuan/transmart/Pheno-Import/pheno_import.sh",
 		topNode: cohortInfo[0],
 		studyName: cohortInfo[1],
 		phenoAddress: this.getUrl(form.phenoAddress.value),
@@ -215,4 +234,5 @@ DataUploadView.prototype.togglePasswordDisplay = function (checkbox){
 
 // init heat map view instance
 var dataUpload = new DataUploadView();
+
 
