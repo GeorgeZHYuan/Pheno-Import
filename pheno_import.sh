@@ -20,7 +20,5 @@ $PH_HOME/conf/initialize.sh "${upload_vars[@]}"
 # Build Upload tables from patient data using pythong script
 python $PH_HOME/src/setup_data_file.py "${patient_ids[@]}"
 
-echo "wasd" > /home/gzyuan/testing.txt
-
 # Upload to transmart using upload tables
 java -jar $TM_DATALOADER_PATH/tm_etl.jar -c $TM_CONFIG_FILE_PATH
