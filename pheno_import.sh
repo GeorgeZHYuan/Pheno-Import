@@ -1,9 +1,9 @@
 #!/bin/bash
-source $HOME/.Pheno_Settings.config
+source $HOME/.pheno_settings.config
 
 # Manually set variables
-# upload_vars(6 elements): Study ID | Phenotips Address | Phenotips Username | Phenotips Password
-upload_vars=('TOP NODE' 'STUDY NAME' 'http://localhost:10000' 'Admin' 'admin')
+# upload_vars(5 elements): Top Folder | Study Name | Phenotips Address | Phenotips Username | Phenotips Password
+upload_vars=('http://localhost:10000' 'Admin' 'admin' 'TOP NODE' 'STUDY NAME')
 patient_ids=('P0000001' 'P0000002' 'P0000003' 'P0000004' 'P0000005' 'P0000006')
 
 # Get and overwrite upload variables if terminal arguments exist
@@ -19,6 +19,8 @@ $PH_HOME/conf/initialize.sh "${upload_vars[@]}"
 
 # Build Upload tables from patient data using pythong script
 python $PH_HOME/src/setup_data_file.py "${patient_ids[@]}"
+
+echo "wasd" > /home/gzyuan/testing.txt
 
 # Upload to transmart using upload tables
 java -jar $TM_DATALOADER_PATH/tm_etl.jar -c $TM_CONFIG_FILE_PATH

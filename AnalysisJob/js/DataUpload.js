@@ -27,9 +27,29 @@ DataUploadView.prototype.submit_job = function (form) {
 
 	// if formParams are submitable
 	if (this.parametersAreValid(formParams)) {
-		submitJob(formParams);
+		this.submitJob(formParams);
 	}
 };
+
+// send data to servlet
+DataUploadView.prototype.submitJob = function (formParams) {
+	document.getElementById("phenoUploadButton").disabled = true;
+	$.ajax({
+		url: '/phenoimport/RunPhenoImport',
+		type: 'GET',
+		data: formParams,
+		dataTypr: 'json',
+		contentType: 'application/json; charset=utf-8',
+		success: function (response) {
+		    	alert(response);
+			document.getElementById("phenoUploadButton").disabled = true;
+		},
+		error: function (xhr) {
+		   	 alert(xhr.responseText);
+			document.getElementById("phenoUploadButton").disabled = true;
+		}
+	});
+}
 
 
 // get form params
@@ -46,7 +66,7 @@ DataUploadView.prototype.get_form_params = function (form) {
 	}
 
 	return {
-		phenoImportLocation: "~/transmart/Pheno-Import/pheno_import.sh",
+		phenoImportLocation: "/home/gzyuan/Pheno-Import/pheno_import.sh",
 		topNode: cohortInfo[0],
 		studyName: cohortInfo[1],
 		phenoAddress: this.getUrl(form.phenoAddress.value),
@@ -103,12 +123,12 @@ DataUploadView.prototype.clearCheckedItems = function () {
 	var checkboxes = document.getElementsByClassName('UploadConf');	
 	
 	for (var i = 0; i < checkboxes.length; i++) {
-      	if (checkboxes[i].checked == true) {
-		console.log("Removing: " + table.rows[i].cells[0].innerHTML);
-	    	table.deleteRow(i);
-		i -= 1;
-      	}
-    }
+		if (checkboxes[i].checked == true) {
+			console.log("Removing: " + table.rows[i].cells[0].innerHTML);
+			table.deleteRow(i);
+			i -= 1;
+		}
+	}
 };
 
 // select or unselect all patients in patient table
@@ -122,8 +142,8 @@ DataUploadView.prototype.toggleSelectAll = function () {
 	}
 	
 	for (var i = 0; i < checkboxes.length; i++) {
-     	checkboxes[i].checked = selectState;
-    }
+		checkboxes[i].checked = selectState;
+	}
 }
 
 
