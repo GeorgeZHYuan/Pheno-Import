@@ -11,7 +11,7 @@ sudo pip install requests
 
 # setup import-data folder
 mkdir $PH_HOME/import-data
-sudo chown tomcat7:tomcat7 $PH_HOME/import-data
+sudo chown -R $USER:tomcat7 $PH_HOME/*
 
 
 # setup phenotips psql user
@@ -19,10 +19,10 @@ sudo -u postgres createuser $TRANSMART_DB_USR -s
 sudo -u postgres psql -c "ALTER USER $TRANSMART_DB_USR WITH PASSWORD '$TRANSMART_DB_PWD';"
 
 if [ ! -f $HOME/.pgpass ]; then
-	sudo touch $HOME/.pgpass
-	sudo chmod 0600 $HOME/.pgpass
+	touch $HOME/.pgpass
+	chmod 0600 $HOME/.pgpass
 fi;
-sudo echo "$ADDRESS:transmart:$TRANSMART_DB_USR:$TRANSMART_DB_PWD" >> $HOME/.pgpass
+echo "$ADDRESS:transmart:$TRANSMART_DB_USR:$TRANSMART_DB_PWD" >> $HOME/.pgpass
 
 if [ ! -f $TOMCAT_HOME/.pgpass ]; then
 	sudo touch $TOMCAT_HOME/.pgpass
