@@ -42,11 +42,11 @@ DataUploadView.prototype.submitJob = function (formParams) {
 		contentType: 'application/json; charset=utf-8',
 		success: function (response) {
 		    	alert(response);
-			document.getElementById("phenoUploadButton").disabled = true;
+			document.getElementById("phenoUploadButton").disabled = false;
 		},
 		error: function (xhr) {
 		   	 alert(xhr.responseText);
-			document.getElementById("phenoUploadButton").disabled = true;
+			document.getElementById("phenoUploadButton").disabled = false;
 		}
 	});
 }
@@ -183,7 +183,6 @@ DataUploadView.prototype.getPhenoPatientList = function () {
 	request.send();
 	request.onreadystatechange = function () {
 		if (request.readyState == 4 && request.status == 200) {
-			document.getElementById("phDataFetcher").disabled = false;
 			var response = JSON.parse(request.responseText);
 	
 			for (var i = 0; i < response.length; i++) {
@@ -191,6 +190,7 @@ DataUploadView.prototype.getPhenoPatientList = function () {
 				console.log("Adding: " + response[i].name + ", "+ response[i].id);
 			}
 		} 
+		document.getElementById("phDataFetcher").disabled = false;
 	}	
 };
 
