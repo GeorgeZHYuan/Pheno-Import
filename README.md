@@ -20,11 +20,16 @@ IMPORTANT: Make sure you have direct access to the tranSMART database.
      * Go to `conf/setup.config`.
      * Make sure the username for `TRANSMART_DB_USR` is not taken in database.
      * Note: This option is a general solution, and may not work for everyone. We recommend the previous option and setting up [tMDataLoader](https://github.com/Clarivate-LSPS/tMDataLoader) specifically for your own machine.
-3. Make sure all the varaibles match their descriptions in the file
+3. Make sure all the variables match their descriptions in the file
 4. From the Pheno-Import directry run `build.sh`.
 5. Make sure tomcat has restarted. Manually restart it if did not.
 
 # Running
+1. Log in to tranSMART.
+2. Click on 'Analyze' at the top of the screen.
+3. Drag a previosuly existing study into subset 1.
+(If using tranSMART version 1.2 click on Summary Statistics.)
+4. Click into Advanced Workflow.
 **From Analysis Jobs**
 1. Find the Job "Upload Phenotips Data" in the analysis jobs section.
 2. Give the Phenotips website url and a set of valid credentials. (Needed to access the data)
