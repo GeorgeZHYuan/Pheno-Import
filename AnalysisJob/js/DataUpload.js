@@ -34,22 +34,58 @@ DataUploadView.prototype.submit_job = function (form) {
 // send data to servlet
 DataUploadView.prototype.submitJob = function (formParams) {
 	document.getElementById("phenoUploadButton").disabled = true;
-	$.ajax({
-		url: '/phenoimport/RunPhenoImport',
-		type: 'GET',
-		data: formParams,
-		dataTypr: 'json',
-		contentType: 'application/json; charset=utf-8',
-		success: function (response) {
-		    	alert(response);
-			document.getElementById("phenoUploadButton").disabled = false;
-		},
-		error: function (xhr) {
-		   	 alert(xhr.responseText);
-			document.getElementById("phenoUploadButton").disabled = false;
+
+    var servletAddress = "http://"+window.location.host+"/phenoimport/RunPhenoImport";
+
+    // Separate patientIds array and delete it from original
+    var patientIds = formParams['patientIds'];
+    delete formParams["patientIds"];
+
+    // Convert without patientIds
+    var params = Object.keys(formParams).map(function(k){
+        return encodeURIComponent(k) + '=' + encodeURIComponent(formParams[k]);
+    }).join('&');
+
+    // Convert patientIds one by one
+    for (var i = 0; i < patientIds.length; i++){
+        params += "&patientIds%5B%5D="+patientIds[i];
+    }
+
+    // XMLHttpRequest starts
+    var request = new XMLHttpRequest();
+	request.open("GET", servletAddress+"?"+params, true);
+	request.send();
+	request.onreadystatechange = function () {
+		if (request.readyState == 4 && request.status == 200) {
+            alert(request.responseText);
 		}
-	});
-}
+		document.getElementById("phenoUploadButton").disabled = false;
+	}
+};
+
+// get form params
+DataUploadView.prototype.get_form_params = function (form) {
+	var table = document.getElementById("patientIdTable");
+	var checkboxes = document.getElementsByClassName('UploadConf');
+	var cohortInfo = this.getCohortInfo();
+	var uploadPatients = [];
+
+	for (var i = 0; i < checkboxes.length; i++) {
+		if (!(this.patientsMustBeChecked && checkboxes[i].checked == false)){
+	    	uploadPatients.push(table.rows[i].cells[0].innerHTML);
+		}
+	}
+
+	return {
+		phenoImportLocation: "/home/gzyuan/Pheno-Import/pheno_import.sh",
+		topNode: cohortInfo[0],
+		studyName: cohortInfo[1],
+		phenoAddress: this.getUrl(form.phenoAddress.value),
+		phenoUsername: form.phenoUsername.value,
+		phenoPassword: form.phenoPassword.value,
+		patientIds: uploadPatients
+	}
+};
 
 
 // get form params
@@ -66,7 +102,7 @@ DataUploadView.prototype.get_form_params = function (form) {
 	}
 
 	return {
-		phenoImportLocation: "/home/gzyuan/Pheno-Import/pheno_import.sh",
+		phenoImportLocation: "/home/transmart/Pheno-Import/pheno_import.sh",
 		topNode: cohortInfo[0],
 		studyName: cohortInfo[1],
 		phenoAddress: this.getUrl(form.phenoAddress.value),
@@ -170,18 +206,18 @@ DataUploadView.prototype.getCohortInfo = function () {
 
 // request for patient ids to show for user
 DataUploadView.prototype.getPhenoPatientList = function () {
-	document.getElementById("phDataFetcher").disabled = true;	
+	document.getElementById("phDataFetcher").disabled = true; 	
 	var job = this;	
 	var url = this.getUrl(document.getElementById('phenoAddress').value);
 	var username = document.getElementById('phenoUsername').value;
 	var password = document.getElementById('phenoPassword').value;
 	var params = "url="+url+"&username="+username+"&password="+password;
 	var servletAddress = "http://"+window.location.host+"/phenoimport/FetchPatientIds";
-	var request = new XMLHttpRequest();
+	var request = new XMLHttpRequest(); 
 
-	request.open("GET", servletAddress+"?"+params, true);
+	request.open("GET", servletAddress+"?"+params, true); 
 	request.send();
-	request.onreadystatechange = function () {
+	request.onreadystatechange = function () { 
 		if (request.readyState == 4 && request.status == 200) {
 			var response = JSON.parse(request.responseText);
 	
