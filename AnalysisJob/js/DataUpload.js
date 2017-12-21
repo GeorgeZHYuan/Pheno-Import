@@ -77,39 +77,12 @@ DataUploadView.prototype.get_form_params = function (form) {
 	}
 
 	return {
-		phenoImportLocation: "/home/transmart/Pheno-Import/pheno_import.sh",
 		topNode: cohortInfo[0],
 		studyName: cohortInfo[1],
 		phenoAddress: this.getUrl(form.phenoAddress.value),
 		phenoUsername: form.phenoUsername.value,
 		phenoPassword: form.phenoPassword.value,
 		patientIds: uploadPatients
-	}
-};
-
-
-// get form params
-DataUploadView.prototype.get_form_params = function (form) {
-	var table = document.getElementById("patientIdTable");
-	var checkboxes = document.getElementsByClassName('UploadConf');	
-	var cohortInfo = this.getCohortInfo();
-	var uploadPatients = [];
-	
-	for (var i = 0; i < checkboxes.length; i++) {
-		if (!(this.patientsMustBeChecked && checkboxes[i].checked == false)){
-	    	uploadPatients.push(table.rows[i].cells[0].innerHTML);
-		}
-	}
-
-	return {
-		phenoImportLocation: "/home/transmart/Pheno-Import/pheno_import.sh",
-		topNode: cohortInfo[0],
-		studyName: cohortInfo[1],
-		phenoAddress: this.getUrl(form.phenoAddress.value),
-		phenoUsername: form.phenoUsername.value,
-		phenoPassword: form.phenoPassword.value,
-		patientIds: uploadPatients,
-		jobType: 'DataUpload'
 	}
 };
 

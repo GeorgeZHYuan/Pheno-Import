@@ -34,13 +34,6 @@ sudo echo "$ADDRESS:transmart:$TRANSMART_DB_USR:$TRANSMART_DB_PWD" >> $TOMCAT_HO
 sudo chown tomcat7: $TOMCAT_HOME/.pgpass
 
 
-# determine pheno_import.sh location for JS
-scriptPath=$PH_HOME/pheno_import.sh
-line_number=$(awk '/phenoImportLocation/{ print NR; exit }' "$PH_HOME/AnalysisJob/js/DataUpload.js")
-replacement="		phenoImportLocation: \""${scriptPath//\//\\/}\",
-sed -i "${line_number}s/.*/$replacement/" $PH_HOME/AnalysisJob/js/DataUpload.js
-
-
 # setup analysis jobs UI
 compile_location=$PH_HOME/AnalysisJob
 edit_location=/var/lib/tomcat7/webapps
