@@ -21,7 +21,7 @@ IMPORTANT: Make sure you have direct access to the tranSMART database.
      * Make sure the username for `TRANSMART_DB_USR` is not taken in database.
      * Note: This option is a general solution, and may not work for everyone. We recommend the previous option and setting up [tMDataLoader](https://github.com/Clarivate-LSPS/tMDataLoader) specifically for your own machine.
 3. Make sure all the variables match their descriptions in the file
-4. Go into /Pheno-Import/src/RunPhenoImport.java
+4. Go into /Pheno-Import/src/phenoimport/src/RunPhenoImport.java
 5. In line 37 change String phenoImportLocation to the location of the file pheno_import.sh in your system (eg. /home/transmart/Pheno-Import/pheno_import.sh).
 6. Recompile the .java files into a .war file, then move it into /Pheno-Import/AnalysisJob/
 7. From the Pheno-Import directry run `build.sh`.
