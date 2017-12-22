@@ -34,7 +34,7 @@ public class RunPhenoImport extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String phenoImportLocation = "/gpfs/common/programs/tm_pheno_ext/Pheno-Import/pheno_import.sh";
+		String phenoImportLocation = ""; //Change the string with the location of pheno_import.sh (eg. /home/transmart/Pheno-Import/pheno_import.sh)
 		String topNode = request.getParameter("topNode");
 		String studyName = request.getParameter("studyName");
 		String phenoAddress = request.getParameter("phenoAddress");
