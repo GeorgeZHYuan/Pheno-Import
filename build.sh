@@ -11,7 +11,7 @@ sudo pip install requests
 
 # setup import-data folder
 mkdir $PH_HOME/import-data
-sudo chown -R $USER:tomcat7 $PH_HOME/*
+sudo chown -R tomcat7:tomcat7 $PH_HOME/*
 
 
 # setup phenotips psql user
